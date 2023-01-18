@@ -8,6 +8,9 @@
 
 #define MAX_LOADSTRING 100
 
+#define MENU_HELP 1
+#define FILE_MENU_EXIT 2
+
 // Global Variables:
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
@@ -18,6 +21,9 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+
+HMENU hMenu;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -57,7 +63,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
+void AddMenu(HWND hWnd) 
+{
+    //*commented out sections are the lines of code for implementing submenues which will not be needed in this program
+    hMenu = CreateMenu();
+    HMENU hFileMenu = CreateMenu();
+    //HMENU hSubMenu = CreateMenu();
 
+    AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_EXIT, L"Exit");
+    //AppendMenuW(hFileMenu, MF_POPUP, (UINT_PTR)hSubMenu, L"Open");
+    
+    //AppendMenuW(hSubMenu, MF_STRING, 10000, L"Wheeeeeeee");
+
+    //instead of MF_STRING, MF_POPUP will be used because this will create a popup when clicked on
+    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hFileMenu, L"File");
+    AppendMenuW(hMenu, MF_STRING, MENU_HELP, L"Help");
+    
+    SetMenu(hWnd, hMenu);
+}
 
 //
 //  FUNCTION: MyRegisterClass()
@@ -128,20 +151,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_COMMAND:
+        switch (wParam) 
         {
-            int wmId = LOWORD(wParam);
-            // Parse the menu selections:
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
+        case MENU_HELP:
+            MessageBox(hWnd, L"This is a Calculator application. Enter numbers in by clicking the buttons displaying that number and click the buttons with the operation you wish to perfrom in order to perform that operation on your number", L"Help", 1);
+            break;
+        case FILE_MENU_EXIT:
+            DestroyWindow(hWnd);
+            break;
         }
         break;
     case WM_PAINT:
@@ -154,6 +171,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_DESTROY:
         PostQuitMessage(0);
+        break;
+    case WM_CREATE:
+        AddMenu(hWnd);
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
