@@ -80,6 +80,11 @@ void AddMenu(HWND hWnd)
     SetMenu(hWnd, hMenu);
 }
 
+void TestBox(HWND hWnd) 
+{
+    
+}
+
 //
 //  FUNCTION: MyRegisterClass()
 //
@@ -172,6 +177,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_CREATE:
         AddMenu(hWnd);
+        TestBox(hWnd);
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
