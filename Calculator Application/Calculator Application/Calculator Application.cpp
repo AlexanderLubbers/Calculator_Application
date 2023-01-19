@@ -1,5 +1,5 @@
 // Calculator Application.cpp : Defines the entry point for the application.
-//I am going to cry
+//accoutn test
 
 #include "framework.h"
 #include "Calculator Application.h"
