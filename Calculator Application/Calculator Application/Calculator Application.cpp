@@ -80,9 +80,9 @@ void AddMenu(HWND hWnd)
     SetMenu(hWnd, hMenu);
 }
 
-void TestBox(HWND hWnd) 
+void CalculatorScreen(HWND hWnd) 
 {
-    
+    CreateWindowEx(WS_EX_CLIENTEDGE, TEXT("Static"), TEXT(""), WS_CHILD | WS_VISIBLE | WS_BORDER, 0, 0, 944, 40, hWnd, NULL, NULL, NULL);
 }
 
 //
@@ -139,6 +139,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+
+void AddButtons() 
+{
+
+}
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -177,7 +182,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_CREATE:
         AddMenu(hWnd);
-        TestBox(hWnd);
+        CalculatorScreen(hWnd);
+        AddButtons();
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
