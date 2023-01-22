@@ -139,6 +139,7 @@
     <ResourceCompile Include="Calculator Application.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\resources\pngtree-flat-calculator-image_1128029.ico" />
     <Image Include="Calculator Application.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

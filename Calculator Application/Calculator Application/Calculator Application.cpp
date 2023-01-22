@@ -1,9 +1,9 @@
 // Calculator Application.cpp : Defines the entry point for the application.
-//account test v3
 
 
 #include "framework.h"
 #include "Calculator Application.h"
+#include "resource.h"
 
 #define MAX_LOADSTRING 100
 
@@ -83,7 +83,7 @@ void AddMenu(HWND hWnd)
 
 void CalculatorScreen(HWND hWnd) 
 {
-    CreateWindowEx(WS_EX_CLIENTEDGE, TEXT("Static"), TEXT(""), WS_CHILD | WS_VISIBLE | WS_BORDER, 0, 0, 944, 40, hWnd, NULL, NULL, NULL);
+    CreateWindowEx(WS_EX_CLIENTEDGE, TEXT("Static"), TEXT(""), WS_CHILD | WS_VISIBLE | WS_BORDER, 0, 0, 5, 40, hWnd, NULL, NULL, NULL);
 }
 
 //
@@ -102,12 +102,12 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CALCULATORAPPLICATION));
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_CALCULATORAPPLICATION);
     wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_ICON1));
 
     return RegisterClassExW(&wcex);
 }

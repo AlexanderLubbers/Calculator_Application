@@ -45,5 +45,8 @@
     <Image Include="Calculator Application.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\resources\pngtree-flat-calculator-image_1128029.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
