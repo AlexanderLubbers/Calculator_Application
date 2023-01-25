@@ -81,11 +81,6 @@ void AddMenu(HWND hWnd)
     SetMenu(hWnd, hMenu);
 }
 
-void CalculatorScreen(HWND hWnd) 
-{
-    CreateWindowEx(WS_EX_CLIENTEDGE, TEXT("Static"), TEXT(""), WS_CHILD | WS_VISIBLE | WS_BORDER, 0, 0, 5, 40, hWnd, NULL, NULL, NULL);
-}
-
 //
 //  FUNCTION: MyRegisterClass()
 //
@@ -145,7 +140,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 void AddButtons(HWND hWnd) 
 {
     DWORD dwStyle = WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON;
-    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 10, 100, 50, 100, hWnd, NULL, (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), NULL);
+    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 10, 100, 40, 40, hWnd, NULL, (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), NULL);
 }
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
@@ -185,7 +180,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_CREATE:
         AddMenu(hWnd);
-        CalculatorScreen(hWnd);
         AddButtons(hWnd);
         break;
     default:
