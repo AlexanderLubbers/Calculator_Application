@@ -142,9 +142,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 }
 
 
-void AddButtons() 
+void AddButtons(HWND hWnd) 
 {
-
+    DWORD dwStyle = WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON;
+    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 10, 100, 50, 100, hWnd, NULL, (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), NULL);
 }
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
@@ -185,7 +186,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
         AddMenu(hWnd);
         CalculatorScreen(hWnd);
-        AddButtons();
+        AddButtons(hWnd);
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
