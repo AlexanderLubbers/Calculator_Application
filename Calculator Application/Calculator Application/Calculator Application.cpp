@@ -9,6 +9,7 @@
 
 #define MENU_HELP 1
 #define FILE_MENU_EXIT 2
+#define FILE_MENU_SETTINGS 3
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
@@ -70,6 +71,7 @@ void AddMenu(HWND hWnd)
     //HMENU hSubMenu = CreateMenu();
 
     AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_EXIT, L"Exit");
+    AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_SETTINGS, L"Settings");
     //AppendMenuW(hFileMenu, MF_POPUP, (UINT_PTR)hSubMenu, L"Open");
     
     //AppendMenuW(hSubMenu, MF_STRING, 10000, L"Wheeeeeeee");
@@ -136,13 +138,16 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-
+//Buttons that need to be created
+//log, logbase, exponent, square root, number pad, sin, cos, tan, operation symbols, history
+//negative symbol, enter, clear, 10^x, e, pi, 
 void AddButtons(HWND hWnd) 
 {
     DWORD dwStyle = WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON;
     HINSTANCE hInstance = (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE);
     HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 10, 100, 40, 40, hWnd, NULL, hInstance, NULL);
     HWND h_Right_Parentheses = CreateWindow(L"BUTTON", L")", dwStyle, 60, 100, 40, 40, hWnd, NULL, hInstance, NULL);
+    HWND h_2nd = CreateWindow(L"BUTTON", L"2nd", dwStyle, 10, 150, 40, 40, hWnd, NULL, hInstance, NULL);
 }
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
