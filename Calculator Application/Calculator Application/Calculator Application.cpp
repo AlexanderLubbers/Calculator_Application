@@ -140,7 +140,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 void AddButtons(HWND hWnd) 
 {
     DWORD dwStyle = WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON;
-    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 10, 100, 40, 40, hWnd, NULL, (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), NULL);
+    HINSTANCE hInstance = (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE);
+    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 10, 100, 40, 40, hWnd, NULL, hInstance, NULL);
+    HWND h_Right_Parentheses = CreateWindow(L"BUTTON", L")", dwStyle, 60, 100, 40, 40, hWnd, NULL, hInstance, NULL);
 }
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
