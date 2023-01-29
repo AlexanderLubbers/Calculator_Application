@@ -166,6 +166,13 @@ void AddButtons(HWND hWnd)
     HWND h_Left_Parentss = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     HWND h_Left_Parehees = CreateWindow(L"BUTTON", L"", dwStyle, 461, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     HWND h_Left_Panthses = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 202.2, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+
+    HWND a = CreateWindow(L"BUTTON", L"", dwStyle, 15, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND b = CreateWindow(L"BUTTON", L"", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND c = CreateWindow(L"BUTTON", L"", dwStyle, 238, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND d = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND e = CreateWindow(L"BUTTON", L"", dwStyle, 461, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND f = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 }
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
