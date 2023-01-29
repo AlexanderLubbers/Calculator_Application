@@ -150,7 +150,6 @@ void AddButtons(HWND hWnd)
     //15 is the space inbetween the buttons
     //each button can be 72.5 units tall and each button can be 96.5 units wide
     
-    HWND test = CreateWindow(L"Static", L"", WS_CHILD | WS_VISIBLE | WS_BORDER, 0, 100, 684, 1, hWnd, NULL, NULL, NULL);
 
     //first row
     HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"", dwStyle, 15, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
