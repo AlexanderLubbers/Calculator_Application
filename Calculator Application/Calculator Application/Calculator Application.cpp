@@ -140,14 +140,24 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 //Buttons that need to be created
 //log, logbase, exponent, square root, number pad, sin, cos, tan, operation symbols, history
-//negative symbol, enter, clear, 10^x, e, pi, 
+//negative symbol, enter, clear, 10^x, e, pi, ., frac ->34 buttons
 void AddButtons(HWND hWnd) 
 {
     DWORD dwStyle = WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON;
     HINSTANCE hInstance = (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE);
-    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 10, 100, 40, 40, hWnd, NULL, hInstance, NULL);
-    HWND h_Right_Parentheses = CreateWindow(L"BUTTON", L")", dwStyle, 60, 100, 40, 40, hWnd, NULL, hInstance, NULL);
-    HWND h_2nd = CreateWindow(L"BUTTON", L"2nd", dwStyle, 10, 150, 40, 40, hWnd, NULL, hInstance, NULL);
+
+    //HWND test = CreateWindow(L"Static", L"", WS_CHILD | WS_VISIBLE| WS_BORDER, 0, 100, 684, 540, hWnd, NULL, NULL, NULL); -> total area the buttons are allowed to take up
+    //15 is the space inbetween the buttons
+    //each button can be 72.5 units tall and each button can be 96.5 units wide
+    
+    HWND test = CreateWindow(L"Static", L"", WS_CHILD | WS_VISIBLE | WS_BORDER, 0, 100, 684, 1, hWnd, NULL, NULL, NULL);
+
+    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 15, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Parenthese = CreateWindow(L"BUTTON", L")", dwStyle, 126.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Parenthes = CreateWindow(L"BUTTON", L"", dwStyle, 238, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Parentses = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Pareheses = CreateWindow(L"BUTTON", L"", dwStyle, 461, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Pantheses = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 }
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
