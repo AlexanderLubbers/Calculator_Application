@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddButtons.h" />
     <ClInclude Include="Calculator Application.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
@@ -135,6 +136,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddButtons.cpp" />
     <ClCompile Include="Calculator Application.cpp" />
   </ItemGroup>
   <ItemGroup>
