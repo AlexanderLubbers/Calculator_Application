@@ -11,12 +11,12 @@ void AddButtons::button(HWND hWnd)
 
 
     //first row
-    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"", dwStyle, 15, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-    HWND h_Left_Parenthese = CreateWindow(L"BUTTON", L"", dwStyle, 126.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Parentheses = CreateWindow(L"BUTTON", L"(", dwStyle, 15, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Right_Parantheses = CreateWindow(L"BUTTON", L")", dwStyle, 126.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     HWND h_Left_Parenthes = CreateWindow(L"BUTTON", L"", dwStyle, 238, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     HWND h_Left_Parentses = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-    HWND h_Left_Pareheses = CreateWindow(L"BUTTON", L"", dwStyle, 461, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-    HWND h_Left_Pantheses = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Pareheses = CreateWindow(L"BUTTON", L"History", dwStyle, 461, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Left_Pantheses = CreateWindow(L"BUTTON", L"Clear", dwStyle, 572.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //second row
     HWND h_Left_Pare = CreateWindow(L"BUTTON", L"", dwStyle, 15, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
