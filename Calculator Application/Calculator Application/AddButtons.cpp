@@ -1,5 +1,5 @@
 #include "AddButtons.h"
-#include "resource3.h"
+#include "resource.h"
 
 void AddButtons::button(HWND hWnd)
 {
