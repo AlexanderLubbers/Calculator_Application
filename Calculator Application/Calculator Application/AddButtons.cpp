@@ -1,5 +1,6 @@
 #include "AddButtons.h"
 #include "resource.h"
+#include "gdiplus.h"
 
 void AddButtons::button(HWND hWnd)
 {
