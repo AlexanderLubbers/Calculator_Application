@@ -73,6 +73,7 @@ void AddMenu(HWND hWnd)
     //HMENU hSubMenu = CreateMenu();
 
     AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_EXIT, L"Exit");
+    AppendMenuW(hFileMenu, MF_SEPARATOR, NULL, NULL);
     AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_SETTINGS, L"Settings");
     //AppendMenuW(hFileMenu, MF_POPUP, (UINT_PTR)hSubMenu, L"Open");
     
