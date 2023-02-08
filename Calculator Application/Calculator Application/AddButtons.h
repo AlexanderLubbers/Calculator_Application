@@ -1,7 +1,9 @@
 #pragma once
 #include "windows.h"
 #include "resource.h"
-//#include "gdiplus.h"
+#include <objidl.h>
+#include <gdiplus.h>
+using namespace Gdiplus;
 #pragma comment (lib,"Gdiplus.lib")
 
 class AddButtons {

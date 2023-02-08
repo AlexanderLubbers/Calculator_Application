@@ -1,5 +1,6 @@
 #include "AddButtons.h"
 
+
 //Gdiplus::Bitmap* AddButtons::LoadImageFromResource(HMODULE hMod, const wchar_t* resid, const wchar_t* restype, HWND hWnd)
 //{
 //    IStream* pStream = nullptr;
