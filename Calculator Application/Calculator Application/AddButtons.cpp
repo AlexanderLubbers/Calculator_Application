@@ -83,11 +83,6 @@ void AddButtons::button(HWND hWnd)
     //second row
 
     HWND h_Left_Pare = CreateWindow(L"BUTTON", L"", dwStyle, 15, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-    Gdiplus::Bitmap* pBmp = LoadImageFromResource(hInstance, MAKEINTRESOURCE(SQROOT), L"JPEG", hWnd);
-    if (pBmp == NULL) {
-        MessageBox(hWnd, L"I am going to kill myself", L"Why", 1);
-    }
-
     //7
     HWND h_Left_Parees = CreateWindow(L"BUTTON", L"7", dwStyle, 126.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //8
