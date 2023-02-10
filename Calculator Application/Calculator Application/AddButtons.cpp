@@ -1,11 +1,11 @@
 #include "AddButtons.h"
-#include "resource.h"
+
 
 void AddButtons::button(HWND hWnd)
 {
-    DWORD dwStyle = WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON;
-    DWORD dwStyleBMP = WS_VISIBLE | WS_CHILD | BS_BITMAP | BS_DEFPUSHBUTTON;
-    HINSTANCE hInstance = (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE);
+    DWORD dwStyle = WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON;
+    DWORD dwStyleBMP = WS_VISIBLE | WS_CHILD | BS_BITMAP | BS_PUSHBUTTON;
+    HINSTANCE hInstance = GetModuleHandle(NULL);
 
     //HWND test = CreateWindow(L"Static", L"", WS_CHILD | WS_VISIBLE| WS_BORDER, 0, 100, 684, 540, hWnd, NULL, NULL, NULL); -> total area the buttons are allowed to take up
     //15 is the space inbetween the buttons
@@ -28,8 +28,13 @@ void AddButtons::button(HWND hWnd)
 
     //second row
 
-    HWND h_Left_Pare = CreateWindow(L"BUTTON", L"", dwStyle, 15, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Sqroot = CreateWindow(L"BUTTON", NULL, dwStyleBMP, 15, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //7
+    HBITMAP help = (HBITMAP)LoadImage(hInstance, MAKEINTRESOURCE(ROOT), IMAGE_BITMAP, 20, 20, NULL);
+    if (help == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Sqroot, BM_SETIMAGE, (WPARAM)IMAGE_BITMAP, (LPARAM)help);
     HWND h_Left_Parees = CreateWindow(L"BUTTON", L"7", dwStyle, 126.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //8
     HWND h_Left_Parenthe = CreateWindow(L"BUTTON", L"8", dwStyle, 238, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
@@ -91,3 +96,6 @@ void AddButtons::button(HWND hWnd)
 
     HWND v = CreateWindow(L"BUTTON", L"", dwStyle, 516.75, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
 }
+
+
+
