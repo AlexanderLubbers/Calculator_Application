@@ -18,28 +18,30 @@ void AddButtons::button(HWND hWnd)
     //)
     HWND h_Right_Parantheses = CreateWindow(L"BUTTON", L")", dwStyle, 126.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //.
-    HWND h_Left_Parenthes = CreateWindow(L"BUTTON", L".", dwStyle, 238, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Decimal_Point = CreateWindow(L"BUTTON", L".", dwStyle, 238, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //-
-    HWND h_Left_Parentses = CreateWindow(L"BUTTON", L"-", dwStyle, 349.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Negative_Symbol = CreateWindow(L"BUTTON", L"-", dwStyle, 349.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //history button
-    HWND h_Left_Pareheses = CreateWindow(L"BUTTON", L"History", dwStyle, 461, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_History = CreateWindow(L"BUTTON", L"History", dwStyle, 461, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //history clear
-    HWND h_Left_Pantheses = CreateWindow(L"BUTTON", L"Clear", dwStyle, 572.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Clear = CreateWindow(L"BUTTON", L"Clear", dwStyle, 572.5, 115, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //second row
-
+    //uploading the radical symbol onto a button
+    //TODO: make it take up the entire button
     HWND h_Sqroot = CreateWindow(L"BUTTON", NULL, dwStyleBMP, 15, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-    //7
-    HBITMAP help = (HBITMAP)LoadImage(hInstance, MAKEINTRESOURCE(ROOT), IMAGE_BITMAP, 20, 20, NULL);
-    if (help == NULL) {
+    
+    HBITMAP Sqroot_bit = (HBITMAP)LoadImage(hInstance, MAKEINTRESOURCE(ROOT), IMAGE_BITMAP, 20, 20, NULL);
+    if (Sqroot_bit == NULL) {
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
-    SendMessage(h_Sqroot, BM_SETIMAGE, (WPARAM)IMAGE_BITMAP, (LPARAM)help);
-    HWND h_Left_Parees = CreateWindow(L"BUTTON", L"7", dwStyle, 126.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    SendMessage(h_Sqroot, BM_SETIMAGE, (WPARAM)IMAGE_BITMAP, (LPARAM)Sqroot_bit);
+    //7
+    HWND h_Seven = CreateWindow(L"BUTTON", L"7", dwStyle, 126.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //8
-    HWND h_Left_Parenthe = CreateWindow(L"BUTTON", L"8", dwStyle, 238, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Eight = CreateWindow(L"BUTTON", L"8", dwStyle, 238, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //9
-    HWND h_Left_Parentss = CreateWindow(L"BUTTON", L"9", dwStyle, 349.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Nine = CreateWindow(L"BUTTON", L"9", dwStyle, 349.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     HWND h_Left_Parehees = CreateWindow(L"BUTTON", L"", dwStyle, 461, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
@@ -49,11 +51,11 @@ void AddButtons::button(HWND hWnd)
 
     HWND a = CreateWindow(L"BUTTON", L"", dwStyle, 15, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //4
-    HWND b = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Four = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //5
-    HWND c = CreateWindow(L"BUTTON", L"5", dwStyle, 238, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Five = CreateWindow(L"BUTTON", L"5", dwStyle, 238, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //6
-    HWND d = CreateWindow(L"BUTTON", L"6", dwStyle, 349.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Six = CreateWindow(L"BUTTON", L"6", dwStyle, 349.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     HWND e = CreateWindow(L"BUTTON", L"", dwStyle, 461, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
@@ -63,11 +65,11 @@ void AddButtons::button(HWND hWnd)
 
     HWND g = CreateWindow(L"BUTTON", L"", dwStyle, 15, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //1
-    HWND h = CreateWindow(L"BUTTON", L"1", dwStyle, 126.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_One = CreateWindow(L"BUTTON", L"1", dwStyle, 126.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //2
-    HWND i = CreateWindow(L"BUTTON", L"2", dwStyle, 238, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Two = CreateWindow(L"BUTTON", L"2", dwStyle, 238, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //3
-    HWND j = CreateWindow(L"BUTTON", L"3", dwStyle, 349.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Three = CreateWindow(L"BUTTON", L"3", dwStyle, 349.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     HWND k = CreateWindow(L"BUTTON", L"", dwStyle, 461, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
@@ -79,7 +81,7 @@ void AddButtons::button(HWND hWnd)
 
     HWND n = CreateWindow(L"BUTTON", L"", dwStyle, 126.5, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //0
-    HWND o = CreateWindow(L"BUTTON", L"0", dwStyle, 238, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Zero = CreateWindow(L"BUTTON", L"0", dwStyle, 238, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     HWND p = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
