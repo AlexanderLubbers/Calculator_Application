@@ -31,7 +31,7 @@ void AddButtons::button(HWND hWnd)
     //TODO: make it take up the entire button
     HWND h_Sqroot = CreateWindow(L"BUTTON", NULL, dwStyleBMP, 15, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     
-    HBITMAP Sqroot_bit = (HBITMAP)LoadImage(hInstance, MAKEINTRESOURCE(ROOT), IMAGE_BITMAP, 20, 20, NULL);
+    HBITMAP Sqroot_bit = (HBITMAP)LoadImage(hInstance, MAKEINTRESOURCE(ROOT), IMAGE_BITMAP, 40, 40, NULL);
     if (Sqroot_bit == NULL) {
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
