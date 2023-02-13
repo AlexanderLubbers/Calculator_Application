@@ -14,8 +14,7 @@
 #define IDR_MAINFRAME                   128
 #define IDI_ICON1                       129
 #define IDC_STATIC                      -1
-#define SQROOT                          201
-#define ROOT                            202
+#define ROOT                            201
 
 // Next default values for new objects
 // 

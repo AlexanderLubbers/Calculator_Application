@@ -57,7 +57,7 @@
     <Image Include="Calculator.ico">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="root.bmp">
+    <Image Include="..\..\..\..\resources\root.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
