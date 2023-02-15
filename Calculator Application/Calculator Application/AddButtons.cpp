@@ -28,7 +28,6 @@ void AddButtons::button(HWND hWnd)
 
     //second row
     //uploading the radical symbol onto a button
-    //TODO: make it take up the entire button
     HWND h_Sqroot = CreateWindow(L"BUTTON", NULL, dwStyleBMP, 15, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     
     HBITMAP Sqroot_bit = (HBITMAP)LoadImage(hInstance, MAKEINTRESOURCE(ROOT), IMAGE_BITMAP, 40, 40, NULL);
