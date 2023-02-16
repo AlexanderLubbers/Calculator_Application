@@ -27,6 +27,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 HMENU hMenu;
 AddButtons button;
 
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -141,6 +142,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+
+
 //Buttons that need to be created
 //log, logbase, exponent, square root, number pad, sin, cos, tan, operation symbols, history
 //negative symbol, enter, clear, 10^x, e, pi, ., frac ->34 buttons
@@ -156,16 +159,20 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    static HBRUSH defaultbrush = NULL;
     switch (message)
     {
     case WM_COMMAND:
-        switch (wParam) 
+        switch (wParam)
         {
         case MENU_HELP:
             MessageBox(hWnd, L"This is a Calculator application. Enter numbers in by clicking the buttons displaying that number and click the buttons with the operation you wish to perfrom in order to perform that operation on your number", L"Help", 1);
             break;
         case FILE_MENU_EXIT:
             DestroyWindow(hWnd);
+            break;
+        case 301:
+            MessageBox(hWnd, L"301", L"Debug", 1);
             break;
         }
         break;
@@ -190,22 +197,3 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-// Message handler for about box.
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
-
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
-}
