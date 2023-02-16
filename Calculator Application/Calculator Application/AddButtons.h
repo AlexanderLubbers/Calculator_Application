@@ -9,6 +9,7 @@
 
 class AddButtons {
 public:
+	HWND h_Sqroot;
 	void button(HWND hWnd, LPARAM lParam);
 	
 };

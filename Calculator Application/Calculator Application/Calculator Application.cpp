@@ -190,11 +190,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         AddMenu(hWnd);
         button.button(hWnd, lParam);
         break;
-    case WM_CTLCOLORBTN:
-        {
-            
-        }
-        break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
