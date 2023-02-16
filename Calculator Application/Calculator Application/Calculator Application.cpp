@@ -159,7 +159,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    static HBRUSH defaultbrush = NULL;
     switch (message)
     {
     case WM_COMMAND:
@@ -189,7 +188,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_CREATE:
         AddMenu(hWnd);
-        button.button(hWnd);
+        button.button(hWnd, lParam);
+        break;
+    case WM_CTLCOLORBTN:
+        {
+            
+        }
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);

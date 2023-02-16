@@ -9,7 +9,7 @@
 
 class AddButtons {
 public:
-	void button(HWND hWnd);
+	void button(HWND hWnd, LPARAM lParam);
 	
 };
 
