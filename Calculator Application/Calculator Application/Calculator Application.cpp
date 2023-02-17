@@ -5,6 +5,7 @@
 #include "Calculator Application.h"
 #include "resource.h"
 #include "AddButtons.h"
+#include <Commctrl.h>
 
 #define MAX_LOADSTRING 100
 
@@ -26,6 +27,39 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 HMENU hMenu;
 AddButtons button;
+
+
+HBRUSH CreateGradientBrush(COLORREF top, COLORREF bottom, LPNMCUSTOMDRAW item)
+{
+    HBRUSH Brush = NULL;
+    HDC hdcmem = CreateCompatibleDC(item->hdc);
+    HBITMAP hbitmap = CreateCompatibleBitmap(item->hdc, item->rc.right - item->rc.left, item->rc.bottom - item->rc.top);
+    SelectObject(hdcmem, hbitmap);
+
+    int r1 = GetRValue(top), r2 = GetRValue(bottom), g1 = GetGValue(top), g2 = GetGValue(bottom), b1 = GetBValue(top), b2 = GetBValue(bottom);
+    for (int i = 0; i < item->rc.bottom - item->rc.top; i++)
+    {
+        RECT temp;
+        int r, g, b;
+        r = int(r1 + double(i * (r2 - r1) / item->rc.bottom - item->rc.top));
+        g = int(g1 + double(i * (g2 - g1) / item->rc.bottom - item->rc.top));
+        b = int(b1 + double(i * (b2 - b1) / item->rc.bottom - item->rc.top));
+        Brush = CreateSolidBrush(RGB(r, g, b));
+        temp.left = 0;
+        temp.top = i;
+        temp.right = item->rc.right - item->rc.left;
+        temp.bottom = i + 1;
+        FillRect(hdcmem, &temp, Brush);
+        DeleteObject(Brush);
+    }
+    HBRUSH pattern = CreatePatternBrush(hbitmap);
+
+    DeleteDC(hdcmem);
+    DeleteObject(Brush);
+    DeleteObject(hbitmap);
+
+    return pattern;
+}
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -157,6 +191,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - post a quit message and return
 //
 //
+
+static HBRUSH defaultbrush = NULL;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -176,23 +212,57 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
-            EndPaint(hWnd, &ps);
-        }
-        break;
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        // TODO: Add any drawing code that uses hdc here...
+        EndPaint(hWnd, &ps);
+    }
+    break;
     case WM_DESTROY:
         PostQuitMessage(0);
+        DeleteObject(defaultbrush);
         break;
     case WM_CREATE:
         AddMenu(hWnd);
         button.button(hWnd, lParam);
         break;
+    case WM_NOTIFY:
+    {
+        LPNMHDR some_item = (LPNMHDR)lParam;
+
+        if (some_item->idFrom == 301 && some_item->code == NM_CUSTOMDRAW)
+        {
+            LPNMCUSTOMDRAW item = (LPNMCUSTOMDRAW)some_item;
+
+            //Select our color when our button is doing nothing
+            if (defaultbrush == NULL)
+                defaultbrush = CreateGradientBrush(RGB(255, 180, 0), RGB(180, 0, 0), item);
+
+            HPEN pen = CreatePen(PS_INSIDEFRAME, 0, RGB(0, 0, 0));
+
+            HGDIOBJ old_pen = SelectObject(item->hdc, pen);
+            HGDIOBJ old_brush = SelectObject(item->hdc, defaultbrush);
+
+            RoundRect(item->hdc, item->rc.left, item->rc.top, item->rc.right, item->rc.bottom, 5, 5);
+
+            SelectObject(item->hdc, old_pen);
+            SelectObject(item->hdc, old_brush);
+            DeleteObject(pen);
+
+            return CDRF_DODEFAULT;
+
+        }
+        return CDRF_DODEFAULT;
+    }
+    case WM_CTLCOLORBTN: //In order to make those edges invisble when we use RoundRect(),
+    {                //we make the color of our button's background match window's background
+        return (LRESULT)GetSysColorBrush(COLOR_WINDOW + 1);
+    }
+    break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
-}
 
+        return 0;
+    }
+}

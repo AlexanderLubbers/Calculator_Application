@@ -22,7 +22,7 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
 
     //second row
     //uploading the radical symbol onto a button
-    HWND h_Sqroot = CreateWindow(L"BUTTON", NULL, dwStyleBMP, 15, 202.5, 96.5, 72.5, hWnd, (HMENU)301, hInstance, NULL);
+    HWND h_Sqroot = CreateWindowEx(NULL, L"BUTTON", NULL, dwStyleBMP, 15, 202.5, 96.5, 72.5, hWnd, (HMENU)301, hInstance, NULL);
     HBITMAP Sqroot_bit = (HBITMAP)LoadImage(hInstance, MAKEINTRESOURCE(ROOT), IMAGE_BITMAP, 40, 40, NULL);
     if (Sqroot_bit == NULL) {
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
