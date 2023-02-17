@@ -1,5 +1,5 @@
 #pragma once
-#include "windows.h"
+#include "Windows.h"
 #include "resource.h"
 #include <objidl.h>
 #include <gdiplus.h>
@@ -8,7 +8,8 @@
 
 class AddButtons {
 public:
-	void button(HWND hWnd);
+	HWND h_Sqroot;
+	void button(HWND hWnd, LPARAM lParam);
 	
 };
 

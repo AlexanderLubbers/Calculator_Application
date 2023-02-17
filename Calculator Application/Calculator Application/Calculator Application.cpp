@@ -1,10 +1,14 @@
-// Calculator Application.cpp : Defines the entry point for the application.
+#pragma comment(linker,"\"/manifestdependency:type='win32' \
+name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
+processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"") 
+
 
 
 #include "framework.h"
 #include "Calculator Application.h"
 #include "resource.h"
 #include "AddButtons.h"
+#include <Commctrl.h>
 
 #define MAX_LOADSTRING 100
 
@@ -26,6 +30,40 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 HMENU hMenu;
 AddButtons button;
+
+
+HBRUSH CreateGradientBrush(COLORREF top, COLORREF bottom, LPNMCUSTOMDRAW item)
+{
+    HBRUSH Brush = NULL;
+    HDC hdcmem = CreateCompatibleDC(item->hdc);
+    HBITMAP hbitmap = CreateCompatibleBitmap(item->hdc, item->rc.right - item->rc.left, item->rc.bottom - item->rc.top);
+    SelectObject(hdcmem, hbitmap);
+
+    int r1 = GetRValue(top), r2 = GetRValue(bottom), g1 = GetGValue(top), g2 = GetGValue(bottom), b1 = GetBValue(top), b2 = GetBValue(bottom);
+    for (int i = 0; i < item->rc.bottom - item->rc.top; i++)
+    {
+        RECT temp;
+        int r, g, b;
+        r = int(r1 + double(i * (r2 - r1) / item->rc.bottom - item->rc.top));
+        g = int(g1 + double(i * (g2 - g1) / item->rc.bottom - item->rc.top));
+        b = int(b1 + double(i * (b2 - b1) / item->rc.bottom - item->rc.top));
+        Brush = CreateSolidBrush(RGB(r, g, b));
+        temp.left = 0;
+        temp.top = i;
+        temp.right = item->rc.right - item->rc.left;
+        temp.bottom = i + 1;
+        FillRect(hdcmem, &temp, Brush);
+        DeleteObject(Brush);
+    }
+    HBRUSH pattern = CreatePatternBrush(hbitmap);
+
+    DeleteDC(hdcmem);
+    DeleteObject(Brush);
+    DeleteObject(hbitmap);
+
+    return pattern;
+}
+
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -141,6 +179,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+
+
 //Buttons that need to be created
 //log, logbase, exponent, square root, number pad, sin, cos, tan, operation symbols, history
 //negative symbol, enter, clear, 10^x, e, pi, ., frac ->34 buttons
@@ -154,12 +194,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - post a quit message and return
 //
 //
+
+static HBRUSH defaultbrush = NULL;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
     case WM_COMMAND:
-        switch (wParam) 
+        switch (wParam)
         {
         case MENU_HELP:
             MessageBox(hWnd, L"This is a Calculator application. Enter numbers in by clicking the buttons displaying that number and click the buttons with the operation you wish to perfrom in order to perform that operation on your number", L"Help", 1);
@@ -167,45 +209,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case FILE_MENU_EXIT:
             DestroyWindow(hWnd);
             break;
+        case 301:
+            MessageBox(hWnd, L"301", L"Debug", 1);
+            break;
         }
         break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
-            EndPaint(hWnd, &ps);
-        }
-        break;
+    break;
     case WM_DESTROY:
         PostQuitMessage(0);
+        DeleteObject(defaultbrush);
         break;
     case WM_CREATE:
         AddMenu(hWnd);
-        button.button(hWnd);
+        button.button(hWnd, lParam);
         break;
+    case WM_CTLCOLORBTN: //In order to make those edges invisble when we use RoundRect(),
+    {                //we make the color of our button's background match window's background
+        return (LRESULT)GetSysColorBrush(COLOR_WINDOW + 1);
+    }
+    break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
-}
 
-// Message handler for about box.
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
-
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
+        return 0;
     }
-    return (INT_PTR)FALSE;
 }
