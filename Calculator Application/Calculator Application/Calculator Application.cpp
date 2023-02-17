@@ -1,4 +1,7 @@
-// Calculator Application.cpp : Defines the entry point for the application.
+#pragma comment(linker,"\"/manifestdependency:type='win32' \
+name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
+processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"") 
+
 
 
 #include "framework.h"
@@ -211,13 +214,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         }
         break;
-    case WM_PAINT:
-    {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-        // TODO: Add any drawing code that uses hdc here...
-        EndPaint(hWnd, &ps);
-    }
     break;
     case WM_DESTROY:
         PostQuitMessage(0);
@@ -227,34 +223,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         AddMenu(hWnd);
         button.button(hWnd, lParam);
         break;
-    case WM_NOTIFY:
-    {
-        LPNMHDR some_item = (LPNMHDR)lParam;
-
-        if (some_item->idFrom == 301 && some_item->code == NM_CUSTOMDRAW)
-        {
-            LPNMCUSTOMDRAW item = (LPNMCUSTOMDRAW)some_item;
-
-            //Select our color when our button is doing nothing
-            if (defaultbrush == NULL)
-                defaultbrush = CreateGradientBrush(RGB(255, 180, 0), RGB(180, 0, 0), item);
-
-            HPEN pen = CreatePen(PS_INSIDEFRAME, 0, RGB(0, 0, 0));
-
-            HGDIOBJ old_pen = SelectObject(item->hdc, pen);
-            HGDIOBJ old_brush = SelectObject(item->hdc, defaultbrush);
-
-            RoundRect(item->hdc, item->rc.left, item->rc.top, item->rc.right, item->rc.bottom, 5, 5);
-
-            SelectObject(item->hdc, old_pen);
-            SelectObject(item->hdc, old_brush);
-            DeleteObject(pen);
-
-            return CDRF_DODEFAULT;
-
-        }
-        return CDRF_DODEFAULT;
-    }
     case WM_CTLCOLORBTN: //In order to make those edges invisble when we use RoundRect(),
     {                //we make the color of our button's background match window's background
         return (LRESULT)GetSysColorBrush(COLOR_WINDOW + 1);
