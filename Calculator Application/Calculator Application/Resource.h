@@ -15,11 +15,12 @@
 #define IDI_ICON1                       129
 #define CALCULATOR                      129
 #define SQROOT                          131
-#define ADDITION                        132
-#define DIVISION                        133
-#define MULTIPLICATION                  134
 #define IDI_ICON3                       135
-#define SUBTRACTION                     135
+#define ADDITION                        136
+#define SUBTRACTION                     137
+#define MULTIPLICATION                  138
+#define DIVIISION                       139
+#define DIVISION                        139
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
@@ -27,7 +28,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        136
+#define _APS_NEXT_RESOURCE_VALUE        140
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           110
