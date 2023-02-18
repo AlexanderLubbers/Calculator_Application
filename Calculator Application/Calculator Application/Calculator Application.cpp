@@ -8,6 +8,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "Calculator Application.h"
 #include "resource.h"
 #include "AddButtons.h"
+#include "AddMenus.h"
 #include <Commctrl.h>
 
 #define MAX_LOADSTRING 100
@@ -28,41 +29,8 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 
-HMENU hMenu;
+AddMenus menu;
 AddButtons button;
-
-
-HBRUSH CreateGradientBrush(COLORREF top, COLORREF bottom, LPNMCUSTOMDRAW item)
-{
-    HBRUSH Brush = NULL;
-    HDC hdcmem = CreateCompatibleDC(item->hdc);
-    HBITMAP hbitmap = CreateCompatibleBitmap(item->hdc, item->rc.right - item->rc.left, item->rc.bottom - item->rc.top);
-    SelectObject(hdcmem, hbitmap);
-
-    int r1 = GetRValue(top), r2 = GetRValue(bottom), g1 = GetGValue(top), g2 = GetGValue(bottom), b1 = GetBValue(top), b2 = GetBValue(bottom);
-    for (int i = 0; i < item->rc.bottom - item->rc.top; i++)
-    {
-        RECT temp;
-        int r, g, b;
-        r = int(r1 + double(i * (r2 - r1) / item->rc.bottom - item->rc.top));
-        g = int(g1 + double(i * (g2 - g1) / item->rc.bottom - item->rc.top));
-        b = int(b1 + double(i * (b2 - b1) / item->rc.bottom - item->rc.top));
-        Brush = CreateSolidBrush(RGB(r, g, b));
-        temp.left = 0;
-        temp.top = i;
-        temp.right = item->rc.right - item->rc.left;
-        temp.bottom = i + 1;
-        FillRect(hdcmem, &temp, Brush);
-        DeleteObject(Brush);
-    }
-    HBRUSH pattern = CreatePatternBrush(hbitmap);
-
-    DeleteDC(hdcmem);
-    DeleteObject(Brush);
-    DeleteObject(hbitmap);
-
-    return pattern;
-}
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -102,26 +70,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
-void AddMenu(HWND hWnd) 
-{
-    //*commented out sections are the lines of code for implementing submenues which will not be needed in this program
-    hMenu = CreateMenu();
-    HMENU hFileMenu = CreateMenu();
-    //HMENU hSubMenu = CreateMenu();
-
-    AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_EXIT, L"Exit");
-    AppendMenuW(hFileMenu, MF_SEPARATOR, NULL, NULL);
-    AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_SETTINGS, L"Settings");
-    //AppendMenuW(hFileMenu, MF_POPUP, (UINT_PTR)hSubMenu, L"Open");
-    
-    //AppendMenuW(hSubMenu, MF_STRING, 10000, L"Wheeeeeeee");
-
-    //instead of MF_STRING, MF_POPUP will be used because this will create a popup when clicked on
-    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hFileMenu, L"File");
-    AppendMenuW(hMenu, MF_STRING, MENU_HELP, L"Help");
-    
-    SetMenu(hWnd, hMenu);
-}
 
 //
 //  FUNCTION: MyRegisterClass()
@@ -195,7 +143,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 //
 
-static HBRUSH defaultbrush = NULL;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -217,10 +164,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     break;
     case WM_DESTROY:
         PostQuitMessage(0);
-        DeleteObject(defaultbrush);
         break;
     case WM_CREATE:
-        AddMenu(hWnd);
+        menu.AddMenuBar(hWnd);
         button.button(hWnd, lParam);
         break;
     case WM_CTLCOLORBTN: //In order to make those edges invisble when we use RoundRect(),
