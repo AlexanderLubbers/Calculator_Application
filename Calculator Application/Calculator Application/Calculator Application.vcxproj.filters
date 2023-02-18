@@ -63,10 +63,13 @@
     <Image Include="Calculator.ico">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="..\..\..\..\resources\root.bmp">
+    <Image Include="sqroot.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="sqroot.ico">
+    <Image Include="Addition.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Subtraction.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

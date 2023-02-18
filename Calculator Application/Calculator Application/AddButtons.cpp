@@ -34,9 +34,13 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
     HWND h_Eight = CreateWindow(L"BUTTON", L"8", dwStyle, 238, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //9
     HWND h_Nine = CreateWindow(L"BUTTON", L"9", dwStyle, 349.5, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-
-    HWND h_Left_Parehees = CreateWindow(L"BUTTON", L"", dwStyle, 461, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-
+    //division sign
+    HWND h_Division = CreateWindow(L"BUTTON", L"", dwStyleBMP, 461, 202.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON div = LoadIcon(hInstance, MAKEINTRESOURCE(DIVISION));
+    if (div == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Division, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)div);
     HWND h_Left_Panthses = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 202.2, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //third row
@@ -48,9 +52,13 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
     HWND h_Five = CreateWindow(L"BUTTON", L"5", dwStyle, 238, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //6
     HWND h_Six = CreateWindow(L"BUTTON", L"6", dwStyle, 349.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-
-    HWND e = CreateWindow(L"BUTTON", L"", dwStyle, 461, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-
+    
+    HWND h_Mutiplication = CreateWindow(L"BUTTON", L"", dwStyleBMP, 461, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON mult = LoadIcon(hInstance, MAKEINTRESOURCE(MULTIPLICATION));
+    if (mult == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Mutiplication, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)mult);
     HWND f = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //fourth row
@@ -63,8 +71,12 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
     //3
     HWND h_Three = CreateWindow(L"BUTTON", L"3", dwStyle, 349.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
-    HWND k = CreateWindow(L"BUTTON", L"", dwStyle, 461, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-
+    HWND h_Subtraction = CreateWindow(L"BUTTON", L"", dwStyleBMP, 461, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON sub = LoadIcon(hInstance, MAKEINTRESOURCE(SUBTRACTION));
+    if (sub == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Subtraction, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)sub);
     HWND l = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //fifth row
@@ -77,8 +89,12 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
 
     HWND p = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
-    HWND q = CreateWindow(L"BUTTON", L"", dwStyle, 461, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
-
+    HWND h_Addition = CreateWindow(L"BUTTON", L"", dwStyleBMP, 461, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON add = LoadIcon(hInstance, MAKEINTRESOURCE(ADDITION));
+    if (add == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Addition, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)add);
     HWND r = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //sixth row

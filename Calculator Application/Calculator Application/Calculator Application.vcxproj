@@ -144,11 +144,12 @@
     <ResourceCompile Include="Calculator Application.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\resources\root.bmp" />
     <Image Include="Calculator Application.ico" />
     <Image Include="Calculator.ico" />
+    <Image Include="Addition.ico" />
     <Image Include="small.ico" />
     <Image Include="sqroot.ico" />
+    <Image Include="Subtraction.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
