@@ -49,7 +49,7 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
     SendMessage(h_Pi, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)pi);
 
     //third row
-    HWND a = CreateWindow(L"BUTTON", L"", dwStyle, 15, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Exponent = CreateWindow(L"BUTTON", L"", dwStyle, 15, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //4
     HWND h_Four = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //5
@@ -63,7 +63,8 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
     SendMessage(h_Mutiplication, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)mult);
-    HWND f = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    //Sine
+    HWND h_Sin = CreateWindow(L"BUTTON", L"sin", dwStyle, 572.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //fourth row
 
@@ -81,7 +82,8 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
     SendMessage(h_Subtraction, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)sub);
-    HWND l = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    //cosine
+    HWND h_Cos = CreateWindow(L"BUTTON", L"cos", dwStyle, 572.5, 377.5, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //fifth row
 
@@ -99,15 +101,31 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
     SendMessage(h_Addition, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)add);
-    HWND r = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    //tangent
+    HWND h_Tan = CreateWindow(L"BUTTON", L"tan", dwStyle, 572.5, 465, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
 
     //sixth row
-    HWND s = CreateWindow(L"BUTTON", L"", dwStyle, 15, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
-
-    HWND t = CreateWindow(L"BUTTON", L"", dwStyle, 182.25, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
-
-    HWND u = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
-
+    //inverse Sine
+    HWND h_Sininv = CreateWindow(L"BUTTON", L"", dwStyleBMP, 15, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON invsin = LoadIcon(hInstance, MAKEINTRESOURCE(SININV));
+    if (invsin == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Sininv, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)invsin);
+    //inverse Cosine
+    HWND h_Cosinv = CreateWindow(L"BUTTON", L"", dwStyleBMP, 182.25, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON invcos = LoadIcon(hInstance, MAKEINTRESOURCE(COSINV));
+    if (invcos == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Cosinv, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)invcos);
+    //inverse Tangent
+    HWND h_Taninv = CreateWindow(L"BUTTON", L"", dwStyleBMP, 349.5, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON invtan = LoadIcon(hInstance, MAKEINTRESOURCE(TANINV));
+    if (invtan == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Taninv, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)invtan);
     HWND v = CreateWindow(L"BUTTON", L"", dwStyle, 516.75, 552.5, 152.25, 72.5, hWnd, NULL, hInstance, NULL);
 }
 

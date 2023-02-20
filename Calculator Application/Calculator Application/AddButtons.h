@@ -6,6 +6,5 @@
 class AddButtons {
 public:
 	void button(HWND hWnd, LPARAM lParam);
-	
 };
 
