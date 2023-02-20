@@ -156,9 +156,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case FILE_MENU_EXIT:
             DestroyWindow(hWnd);
             break;
-        case 301:
-            MessageBox(hWnd, L"301", L"Debug", 1);
-            break;
         }
         break;
     break;
@@ -167,7 +164,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_CREATE:
         menu.AddMenuBar(hWnd);
-        button.button(hWnd, lParam);
+        button.button(hWnd);
         break;
     case WM_CTLCOLORBTN: //In order to make those edges invisble when we use RoundRect(),
     {                //we make the color of our button's background match window's background
