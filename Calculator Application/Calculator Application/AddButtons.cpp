@@ -41,10 +41,14 @@ void AddButtons::button(HWND hWnd, LPARAM lParam)
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
     SendMessage(h_Division, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)div);
-    HWND h_Left_Panthses = CreateWindow(L"BUTTON", L"", dwStyle, 572.5, 202.2, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HWND h_Pi = CreateWindow(L"BUTTON", L"", dwStyleBMP, 572.5, 202.2, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
+    HICON pi = LoadIcon(hInstance, MAKEINTRESOURCE(PI));
+    if (pi == NULL) {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Pi, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)pi);
 
     //third row
-
     HWND a = CreateWindow(L"BUTTON", L"", dwStyle, 15, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);
     //4
     HWND h_Four = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, NULL, hInstance, NULL);

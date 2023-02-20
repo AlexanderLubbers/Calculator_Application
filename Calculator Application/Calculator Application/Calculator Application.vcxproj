@@ -149,6 +149,7 @@
     <Image Include="Addition.ico" />
     <Image Include="Division.ico" />
     <Image Include="Multiplication.ico" />
+    <Image Include="pi.ico" />
     <Image Include="small.ico" />
     <Image Include="sqroot.ico" />
     <Image Include="Subtraction.ico" />
