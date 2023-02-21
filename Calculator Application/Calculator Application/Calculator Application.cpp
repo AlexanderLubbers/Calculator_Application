@@ -156,6 +156,109 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case FILE_MENU_EXIT:
             DestroyWindow(hWnd);
             break;
+        case LEFT_PARENTHESES_PRESSED:
+            
+            break;
+        case RIGHT_PARENTHESES_PRESSED:
+
+            break;
+        case DECIMAL_PRESSED:
+
+            break;
+        case NEGATIVE_PRESSED:
+
+            break;
+        case HISTORY_PRESSED:
+
+            break;
+        case CLEAR_PRESSED:
+
+            break;
+        case SQROOT_PRESSED:
+
+            break;
+        case SEVEN_PRESSED:
+
+            break;
+        case EIGHT_PRESSED:
+
+            break;
+        case NINE_PRESSED:
+
+            break;
+        case DIVIDE_PRESSED:
+
+            break;
+        case PI_PRESSED:
+            MessageBox(hWnd, L"test", L"test", 1);
+            break;
+        case UNKNOWN_PRESSED:
+
+            break;
+        case FOUR_PRESSED:
+
+            break;
+        case FIVE_PRESSED:
+
+            break;
+        case SIX_PRESSESD:
+            
+            break;
+        case MULTIPLY_PRESSED:
+
+            break;
+
+        case SINE_PRESSED:
+
+            break;
+        case UNKNOWN_PRESSED_:
+
+            break;
+        case ONE_PRESSED:
+
+            break;
+        case TWO_PRESSED:
+
+            break;
+        case THREE_PRESSED:
+            
+            break;
+        case SUBTRACT_PRESSED:
+
+            break;
+        case COSINE_PRESSED:
+
+            break;
+        case A:
+
+            break;
+        case b:
+
+            break;
+        case ZERO_PRESSED:
+
+            break;
+        case c:
+
+            break;
+        case ADD_PRESSED:
+
+            break;
+        case TANGENT_PRESSED:
+
+            break;
+        case INVERSE_SINE_PRESSED:
+
+            break;
+        case INVERSE_COSINE_PRESSED:
+
+            break;
+        case INVERSE_TANGENT_PRESSED:
+
+            break;
+        case d:
+            
+            break;
         }
         break;
     break;
