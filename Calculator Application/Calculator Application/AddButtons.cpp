@@ -49,7 +49,7 @@ void AddButtons::button(HWND hWnd)
     SendMessage(h_Pi, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)pi);
 
     //third row
-    HWND h_Exponent = CreateWindow(L"BUTTON", L"", dwStyle, 15, 290, 96.5, 72.5, hWnd, (HMENU)UNKNOWN_PRESSED, NULL, NULL);
+    HWND h_Exponent = CreateWindow(L"BUTTON", L"Exponent", dwStyle, 15, 290, 96.5, 72.5, hWnd, (HMENU)EXPONENT_PRESSED, NULL, NULL);
     //4
     HWND h_Four = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, (HMENU)FOUR_PRESSED, NULL, NULL);
     //5
@@ -68,7 +68,7 @@ void AddButtons::button(HWND hWnd)
 
     //fourth row
 
-    HWND g = CreateWindow(L"BUTTON", L"", dwStyle, 15, 377.5, 96.5, 72.5, hWnd, (HMENU)UNKNOWN_PRESSED_, NULL, NULL);
+    HWND h_E = CreateWindow(L"BUTTON", L"E", dwStyle, 15, 377.5, 96.5, 72.5, hWnd, (HMENU)E_PRESSED, NULL, NULL);
     //1
     HWND h_One = CreateWindow(L"BUTTON", L"1", dwStyle, 126.5, 377.5, 96.5, 72.5, hWnd, (HMENU)ONE_PRESSED, NULL, NULL);
     //2
@@ -87,9 +87,9 @@ void AddButtons::button(HWND hWnd)
 
     //fifth row
 
-    HWND m = CreateWindow(L"BUTTON", L"", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)A, NULL, NULL);
+    HWND m = CreateWindow(L"BUTTON", L"Log", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)LOG_PRESSED, NULL, NULL);
 
-    HWND n = CreateWindow(L"BUTTON", L"", dwStyle, 126.5, 465, 96.5, 72.5, hWnd, (HMENU)b, NULL, NULL);
+    HWND n = CreateWindow(L"BUTTON", L"LogBASE", dwStyle, 126.5, 465, 96.5, 72.5, hWnd, (HMENU)LOGBASE_PRESSED, NULL, NULL);
     //0
     HWND h_Zero = CreateWindow(L"BUTTON", L"0", dwStyle, 238, 465, 96.5, 72.5, hWnd, (HMENU)ZERO_PRESSED, NULL, NULL);
 

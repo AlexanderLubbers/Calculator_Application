@@ -131,6 +131,7 @@
     <ClInclude Include="AddButtons.h" />
     <ClInclude Include="AddMenus.h" />
     <ClInclude Include="Calculator Application.h" />
+    <ClInclude Include="Calculator_Screen.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -139,6 +140,7 @@
     <ClCompile Include="AddButtons.cpp" />
     <ClCompile Include="AddMenus.cpp" />
     <ClCompile Include="Calculator Application.cpp" />
+    <ClCompile Include="Calculator_Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Calculator Application.rc" />

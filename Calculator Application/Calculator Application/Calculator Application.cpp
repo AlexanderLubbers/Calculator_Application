@@ -192,7 +192,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case PI_PRESSED:
             MessageBox(hWnd, L"test", L"test", 1);
             break;
-        case UNKNOWN_PRESSED:
+        case EXPONENT_PRESSED:
 
             break;
         case FOUR_PRESSED:
@@ -211,7 +211,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case SINE_PRESSED:
 
             break;
-        case UNKNOWN_PRESSED_:
+        case E_PRESSED:
 
             break;
         case ONE_PRESSED:
@@ -229,10 +229,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case COSINE_PRESSED:
 
             break;
-        case A:
+        case LOG_PRESSED:
 
             break;
-        case b:
+        case LOGBASE_PRESSED:
 
             break;
         case ZERO_PRESSED:
