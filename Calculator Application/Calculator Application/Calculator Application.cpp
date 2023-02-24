@@ -157,107 +157,106 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             DestroyWindow(hWnd);
             break;
         case LEFT_PARENTHESES_PRESSED:
-            
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case RIGHT_PARENTHESES_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case DECIMAL_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case NEGATIVE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case HISTORY_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case CLEAR_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case SQROOT_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case SEVEN_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case EIGHT_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case NINE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case DIVIDE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case PI_PRESSED:
             MessageBox(hWnd, L"test", L"test", 1);
             break;
         case EXPONENT_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case FOUR_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case FIVE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case SIX_PRESSESD:
-            
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case MULTIPLY_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
-
         case SINE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case E_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case ONE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case TWO_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case THREE_PRESSED:
-            
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case SUBTRACT_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case COSINE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case LOG_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case LOGBASE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case ZERO_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case c:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case ADD_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case TANGENT_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case INVERSE_SINE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case INVERSE_COSINE_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case INVERSE_TANGENT_PRESSED:
-
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         case d:
-            
+            MessageBox(hWnd, L"test", L"test", 1);
             break;
         }
         break;
