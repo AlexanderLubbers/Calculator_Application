@@ -9,6 +9,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "resource.h"
 #include "AddButtons.h"
 #include "AddMenus.h"
+#include "Calculator_Screen.h"
 #include <Commctrl.h>
 
 #define MAX_LOADSTRING 100
@@ -31,6 +32,8 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 AddMenus menu;
 AddButtons button;
+Calculator_Screen cs;
+
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -145,6 +148,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    int screen_message = 0;
     switch (message)
     {
     case WM_COMMAND:
@@ -157,106 +161,106 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             DestroyWindow(hWnd);
             break;
         case LEFT_PARENTHESES_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 1;
             break;
         case RIGHT_PARENTHESES_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 2;
             break;
         case DECIMAL_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 3;
             break;
         case NEGATIVE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 4;
             break;
         case HISTORY_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 5;
             break;
         case CLEAR_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 6;
             break;
         case SQROOT_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 7;
             break;
         case SEVEN_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 8;
             break;
         case EIGHT_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 9;
             break;
         case NINE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 10;
             break;
         case DIVIDE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 11;
             break;
         case PI_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 12;
             break;
         case EXPONENT_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 13;
             break;
         case FOUR_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 14;
             break;
         case FIVE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 15;
             break;
         case SIX_PRESSESD:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 16;
             break;
         case MULTIPLY_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 17;
             break;
         case SINE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 18;
             break;
         case E_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 19;
             break;
         case ONE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 20;
             break;
         case TWO_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 21;
             break;
         case THREE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 22;
             break;
         case SUBTRACT_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 23;
             break;
         case COSINE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 24;
             break;
         case LOG_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 25;
             break;
         case LOGBASE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 26;
             break;
         case ZERO_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 27;
             break;
         case c:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 28;
             break;
         case ADD_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 29;
             break;
         case TANGENT_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 30;
             break;
         case INVERSE_SINE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 31;
             break;
         case INVERSE_COSINE_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 32;
             break;
         case INVERSE_TANGENT_PRESSED:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 33;
             break;
         case d:
-            MessageBox(hWnd, L"test", L"test", 1);
+            screen_message = 34;
             break;
         }
         break;

@@ -1,5 +1,8 @@
 #pragma once
-class Calculator_Screen
-{
+#include <Windows.h>
+#include "resource.h"
+class Calculator_Screen {
+public:
+	int Draw_Screen(int msg);
 };
 
