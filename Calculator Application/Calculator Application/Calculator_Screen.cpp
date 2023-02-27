@@ -2,7 +2,7 @@
 
 int Calculator_Screen::Draw_Screen(std::string msg)
 {
-	
+	//HWND Calculator_Screen = CreateWindowEx(NULL, L"STATIC", L"", )
 	return 0;
 }
 
@@ -88,7 +88,7 @@ int Calculator_Screen::Recieve_Message(int msg)
 		symbol = "log(";
 		break;
 	case 26:
-		//figure out how to do this
+		symbol = "logBASE(";
 		break;
 	case 27:
 		symbol = "0";
