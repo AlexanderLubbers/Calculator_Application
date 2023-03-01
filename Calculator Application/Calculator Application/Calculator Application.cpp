@@ -241,7 +241,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case ZERO_PRESSED:
             screen_message = 27;
             break;
-        case c:
+        case COMMA_PRESSED:
             screen_message = 28;
             break;
         case ADD_PRESSED:
@@ -259,7 +259,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case INVERSE_TANGENT_PRESSED:
             screen_message = 33;
             break;
-        case d:
+        case RADICAL_PRESSED:
             screen_message = 34;
             break;
         }

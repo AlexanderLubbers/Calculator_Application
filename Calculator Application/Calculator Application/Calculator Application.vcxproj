@@ -150,11 +150,13 @@
     <Image Include="Calculator.ico" />
     <Image Include="Addition.ico" />
     <Image Include="Division.ico" />
+    <Image Include="Exponent.ico" />
     <Image Include="inverse-cos.ico" />
     <Image Include="inverse-sin.ico" />
     <Image Include="inverse-tan.ico" />
     <Image Include="Multiplication.ico" />
     <Image Include="pi.ico" />
+    <Image Include="Radical.ico" />
     <Image Include="small.ico" />
     <Image Include="sqroot.ico" />
     <Image Include="Subtraction.ico" />

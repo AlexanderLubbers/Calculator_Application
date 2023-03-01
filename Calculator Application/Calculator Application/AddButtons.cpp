@@ -49,7 +49,13 @@ void AddButtons::button(HWND hWnd)
     SendMessage(h_Pi, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)pi);
 
     //third row
-    HWND h_Exponent = CreateWindow(L"BUTTON", L"Exponent", dwStyle, 15, 290, 96.5, 72.5, hWnd, (HMENU)EXPONENT_PRESSED, NULL, NULL);
+    HWND h_Exponent = CreateWindow(L"BUTTON", NULL, dwStyleBMP, 15, 290, 96.5, 72.5, hWnd, (HMENU)EXPONENT_PRESSED, NULL, NULL);
+    HICON exponent = LoadIcon(hInstance, MAKEINTRESOURCE(EXPONENT));
+    if (exponent == NULL)
+    {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Exponent, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)exponent);
     //4
     HWND h_Four = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, (HMENU)FOUR_PRESSED, NULL, NULL);
     //5
@@ -87,13 +93,13 @@ void AddButtons::button(HWND hWnd)
 
     //fifth row
 
-    HWND m = CreateWindow(L"BUTTON", L"Log", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)LOG_PRESSED, NULL, NULL);
+    HWND h_Log = CreateWindow(L"BUTTON", L"Log", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)LOG_PRESSED, NULL, NULL);
 
-    HWND n = CreateWindow(L"BUTTON", L"LogBASE", dwStyle, 126.5, 465, 96.5, 72.5, hWnd, (HMENU)LOGBASE_PRESSED, NULL, NULL);
+    HWND h_LogBASE = CreateWindow(L"BUTTON", L"LogBASE", dwStyle, 126.5, 465, 96.5, 72.5, hWnd, (HMENU)LOGBASE_PRESSED, NULL, NULL);
     //0
     HWND h_Zero = CreateWindow(L"BUTTON", L"0", dwStyle, 238, 465, 96.5, 72.5, hWnd, (HMENU)ZERO_PRESSED, NULL, NULL);
 
-    HWND p = CreateWindow(L"BUTTON", L"", dwStyle, 349.5, 465, 96.5, 72.5, hWnd, (HMENU)c, NULL, NULL);
+    HWND h_Comma = CreateWindow(L"BUTTON", L",", dwStyle, 349.5, 465, 96.5, 72.5, hWnd, (HMENU)COMMA_PRESSED, NULL, NULL);
 
     HWND h_Addition = CreateWindow(L"BUTTON", L"", dwStyleBMP, 461, 465, 96.5, 72.5, hWnd, (HMENU)ADD_PRESSED, NULL, NULL);
     HICON add = LoadIcon(hInstance, MAKEINTRESOURCE(ADDITION));
@@ -126,7 +132,13 @@ void AddButtons::button(HWND hWnd)
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
     SendMessage(h_Taninv, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)invtan);
-    HWND v = CreateWindow(L"BUTTON", L"", dwStyle, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)d, NULL, NULL);
+    HWND h_Radical = CreateWindow(L"BUTTON", L"", dwStyleBMP, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)RADICAL_PRESSED, NULL, NULL);
+    HICON radical = LoadIcon(hInstance, MAKEINTRESOURCE(RADICAL));
+    if (radical == NULL)
+    {
+        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
+    }
+    SendMessage(h_Radical, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)radical);
 }
 
 

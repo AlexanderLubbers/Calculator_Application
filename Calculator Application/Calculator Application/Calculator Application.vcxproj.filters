@@ -96,5 +96,11 @@
     <Image Include="inverse-tan.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Exponent.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Radical.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
