@@ -1,10 +1,14 @@
 #include "AddButtons.h"
+#pragma comment(linker,"\"/manifestdependency:type='win32' \
+name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
+processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"") 
 
 void AddButtons::button(HWND hWnd)
 {
     DWORD dwStyle = WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON;
     DWORD dwStyleBMP = WS_VISIBLE | WS_CHILD | BS_BITMAP | BS_PUSHBUTTON;
     HINSTANCE hInstance = GetModuleHandle(NULL);
+
 
     //first row
     //(
@@ -13,6 +17,7 @@ void AddButtons::button(HWND hWnd)
     HWND h_Right_Parantheses = CreateWindow(L"BUTTON", L")", dwStyle, 126.5, 115, 96.5, 72.5, hWnd, (HMENU)RIGHT_PARENTHESES_PRESSED, NULL, NULL);
     //.
     HWND h_Decimal_Point = CreateWindow(L"BUTTON", L".", dwStyle, 238, 115, 96.5, 72.5, hWnd, (HMENU)DECIMAL_PRESSED, NULL, NULL);
+
     //-
     HWND h_Negative_Symbol = CreateWindow(L"BUTTON", L"-", dwStyle, 349.5, 115, 96.5, 72.5, hWnd, (HMENU)NEGATIVE_PRESSED, NULL, NULL);
     //history button

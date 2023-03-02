@@ -10,6 +10,9 @@
 *.userosscache
 *.sln.docstates
 
+#ingnore log and tlog files. If buggy then remove this
+*.log
+*.tlog
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 # Mono auto generated files
