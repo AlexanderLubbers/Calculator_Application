@@ -16,17 +16,11 @@
 #define CALCULATOR                      129
 #define SQROOT                          131
 #define IDI_ICON3                       135
-#define ADDITION                        136
-#define SUBTRACTION                     137
-#define MULTIPLICATION                  138
 #define DIVIISION                       139
-#define DIVISION                        139
-#define PI                              140
 #define SININV                          141
 #define COSINV                          142
 #define IDI_ICON2                       143
 #define TANINV                          143
-#define EXPONENT                        144
 #define IDI_ICON5                       145
 #define RADICAL                         145
 #define IDC_STATIC                      -1
