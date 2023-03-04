@@ -55,7 +55,7 @@ bld/
 **/*_i.c
 **/*_p.c
 **/*.ncb
-**/*.suo
+*.suo
 **/*.tlh
 **/*.tli
 **/*.tlb
