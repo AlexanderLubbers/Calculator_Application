@@ -9,7 +9,6 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "resource.h"
 #include "AddButtons.h"
 #include "AddMenus.h"
-#include "Calculator_Screen.h"
 #include <Commctrl.h>
 
 #define MAX_LOADSTRING 100
@@ -32,7 +31,6 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 AddMenus menu;
 AddButtons button;
-Calculator_Screen cs;
 
 
 
