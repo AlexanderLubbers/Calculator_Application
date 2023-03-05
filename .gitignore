@@ -3,11 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# User-specific files
-**/*.rsuser
-**/*.user
-**/*.userosscache
-**/*.sln.docstates
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
@@ -35,6 +30,7 @@ bld/
 #ignore generated directories
 .vs/
 x64/
+files/
 
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
