@@ -36,9 +36,6 @@
     <ClInclude Include="AddMenus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Calculator_Screen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Calculator Application.cpp">
@@ -48,9 +45,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddMenus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Calculator_Screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
