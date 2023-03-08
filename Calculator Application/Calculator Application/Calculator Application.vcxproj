@@ -130,7 +130,7 @@
   <ItemGroup>
     <ClInclude Include="AddButtons.h" />
     <ClInclude Include="AddMenus.h" />
-    <ClInclude Include="Calculator Application.h" />
+    <ClInclude Include="CalculatorApplication.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -138,26 +138,20 @@
   <ItemGroup>
     <ClCompile Include="AddButtons.cpp" />
     <ClCompile Include="AddMenus.cpp" />
-    <ClCompile Include="Calculator Application.cpp" />
+    <ClCompile Include="CalculatorApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Calculator Application.rc" />
+    <ResourceCompile Include="CalculatorApplication.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Calculator Application.ico" />
+    <Image Include="CalculatorApplication.ico" />
     <Image Include="Calculator.ico" />
-    <Image Include="Addition.ico" />
-    <Image Include="Division.ico" />
-    <Image Include="Exponent.ico" />
     <Image Include="inverse-cos.ico" />
     <Image Include="inverse-sin.ico" />
     <Image Include="inverse-tan.ico" />
-    <Image Include="Multiplication.ico" />
-    <Image Include="pi.ico" />
     <Image Include="Radical.ico" />
     <Image Include="small.ico" />
     <Image Include="sqroot.ico" />
-    <Image Include="Subtraction.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

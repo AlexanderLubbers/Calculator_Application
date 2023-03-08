@@ -24,7 +24,7 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Calculator Application.h">
+    <ClInclude Include="CalculatorApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AddButtons.h">
@@ -38,7 +38,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Calculator Application.cpp">
+    <ClCompile Include="CalculatorApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddButtons.cpp">
@@ -49,7 +49,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Calculator Application.rc">
+    <ResourceCompile Include="CalculatorApplication.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -57,28 +57,13 @@
     <Image Include="small.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Calculator Application.ico">
+    <Image Include="CalculatorApplication.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Calculator.ico">
       <Filter>Assets</Filter>
     </Image>
     <Image Include="sqroot.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Addition.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Subtraction.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Multiplication.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Division.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="pi.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="inverse-sin.ico">
@@ -88,9 +73,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="inverse-tan.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Exponent.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Radical.ico">
