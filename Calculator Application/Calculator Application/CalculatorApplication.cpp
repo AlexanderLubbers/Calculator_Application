@@ -1,15 +1,13 @@
+//this line of code tells the linker also known as the compiler that it will need the Microsoft Windows Common-Conrols
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
 processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"") 
-
-
 
 #include "framework.h"
 #include "CalculatorApplication.h"
 #include "resource.h"
 #include "AddButtons.h"
 #include "AddMenus.h"
-#include <Commctrl.h>
 
 #define MAX_LOADSTRING 100
 
