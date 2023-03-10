@@ -127,10 +127,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 }
 
 
-
-//Buttons that need to be created
-//log, logbase, exponent, square root, number pad, sin, cos, tan, operation symbols, history
-//negative symbol, enter, clear, 10^x, e, pi, ., frac ->34 buttons
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //

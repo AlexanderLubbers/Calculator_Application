@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by Calculator Application.rc
+// Used by CalculatorApplication.rc
 //
 #define IDC_MYICON                      2
 #define IDD_CALCULATORAPPLICATION_DIALOG 102
@@ -17,10 +17,7 @@
 #define SQROOT                          131
 #define IDI_ICON3                       135
 #define DIVIISION                       139
-#define SININV                          141
-#define COSINV                          142
 #define IDI_ICON2                       143
-#define TANINV                          143
 #define IDI_ICON5                       145
 #define RADICAL                         145
 #define IDC_STATIC                      -1
