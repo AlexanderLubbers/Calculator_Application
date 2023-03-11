@@ -1,3 +1,9 @@
+//these have to be included before any class that uses the windows api.
+//in fact that should be done for anything that does not use the winapi
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+
 //this line of code tells the linker also known as the compiler that it will need the Microsoft Windows Common-Conrols
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
@@ -9,9 +15,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "AddButtons.h"
 #include "AddMenus.h"
 
-#include "rapidjson/document.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
+
 
 #define MAX_LOADSTRING 100
 
@@ -34,7 +38,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 AddMenus menu;
 AddButtons button;
 
-
+//using namespace rapidjson;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
