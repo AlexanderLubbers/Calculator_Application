@@ -132,6 +132,7 @@
     <ClInclude Include="AddMenus.h" />
     <ClInclude Include="CalculatorApplication.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="HandleCommand.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -139,6 +140,7 @@
     <ClCompile Include="AddButtons.cpp" />
     <ClCompile Include="AddMenus.cpp" />
     <ClCompile Include="CalculatorApplication.cpp" />
+    <ClCompile Include="HandleCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CalculatorApplication.rc" />
