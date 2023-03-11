@@ -19,7 +19,6 @@
 #define DIVIISION                       139
 #define IDI_ICON2                       143
 #define IDI_ICON5                       145
-#define RADICAL                         145
 #define IDC_STATIC                      -1
 
 // Next default values for new objects

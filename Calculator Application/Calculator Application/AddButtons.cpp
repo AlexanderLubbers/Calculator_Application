@@ -116,13 +116,13 @@ void AddButtons::button(HWND hWnd)
     HWND h_Cosinv = CreateWindow(L"BUTTON", L"arc-cos", dwStyle, 182.25, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_COSINE_PRESSED, NULL, NULL);
     //inverse Tangent
     HWND h_Taninv = CreateWindow(L"BUTTON", L"arc-tan", dwStyle, 349.5, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_TANGENT_PRESSED, NULL, NULL);
-    HWND h_Radical = CreateWindow(L"BUTTON", L"", dwStyleBMP, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)RADICAL_PRESSED, NULL, NULL);
-    HICON radical = LoadIcon(hInstance, MAKEINTRESOURCE(RADICAL));
+    HWND h_Radical = CreateWindow(L"BUTTON", L"foo", dwStyleBMP, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)RADICAL_PRESSED, NULL, NULL);
+    /*HICON radical = LoadIcon(hInstance, MAKEINTRESOURCE(RADICAL));
     if (radical == NULL)
     {
         MessageBox(hWnd, L"Image failed to load", L"Error", 1);
     }
-    SendMessage(h_Radical, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)radical);
+    SendMessage(h_Radical, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)radical);*/
 }
 
 

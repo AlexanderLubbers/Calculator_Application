@@ -66,17 +66,5 @@
     <Image Include="sqroot.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="inverse-sin.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="inverse-cos.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="inverse-tan.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Radical.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

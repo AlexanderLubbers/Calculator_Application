@@ -9,6 +9,10 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "AddButtons.h"
 #include "AddMenus.h"
 
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+
 #define MAX_LOADSTRING 100
 
 #define MENU_HELP 1
