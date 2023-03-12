@@ -131,8 +131,10 @@
     <ClInclude Include="AddButtons.h" />
     <ClInclude Include="AddMenus.h" />
     <ClInclude Include="CalculatorApplication.h" />
+    <ClInclude Include="Calculator_Screen.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="HandleCommand.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -140,7 +142,9 @@
     <ClCompile Include="AddButtons.cpp" />
     <ClCompile Include="AddMenus.cpp" />
     <ClCompile Include="CalculatorApplication.cpp" />
+    <ClCompile Include="Calculator_Screen.cpp" />
     <ClCompile Include="HandleCommand.cpp" />
+    <ClCompile Include="Math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CalculatorApplication.rc" />

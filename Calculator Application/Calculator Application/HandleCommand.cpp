@@ -1,5 +1,8 @@
 #include "HandleCommand.h"
 
+//constructor called upon initializing the class which is what this line of code is doing
+Calculator_Screen s;
+
 void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
 {
     int screen_message = 0;

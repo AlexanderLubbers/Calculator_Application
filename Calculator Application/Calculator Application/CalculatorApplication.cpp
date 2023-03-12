@@ -1,10 +1,3 @@
-//these have to be included before any class that uses the windows api.
-//in fact that should be done for anything that does not use the winapi
-#include "rapidjson/document.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
-
-
 //this line of code tells the linker also known as the compiler that it will need the Microsoft Windows Common-Conrols
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
@@ -13,8 +6,6 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "framework.h"
 #include "CalculatorApplication.h"
 #include "resource.h"
-#include "AddButtons.h"
-#include "AddMenus.h"
 #include "HandleCommand.h"
 
 #define MAX_LOADSTRING 100
@@ -31,7 +22,6 @@ AddMenus menu;
 AddButtons button;
 HandleCommand hacom;
 
-using namespace rapidjson;
 
 //   FUNCTION: InitInstance(HINSTANCE, int)
 //   PURPOSE: Saves instance handle and creates main window
@@ -128,7 +118,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //  WM_DESTROY  - post a quit message and return
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    int screen_message = 0;
     switch (message)
     {
     case WM_COMMAND:
