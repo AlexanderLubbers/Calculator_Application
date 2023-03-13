@@ -36,6 +36,15 @@
     <ClInclude Include="AddMenus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HandleCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator_Screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalculatorApplication.cpp">
@@ -45,6 +54,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddMenus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HandleCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator_Screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -64,18 +82,6 @@
       <Filter>Assets</Filter>
     </Image>
     <Image Include="sqroot.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="inverse-sin.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="inverse-cos.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="inverse-tan.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Radical.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -111,33 +111,12 @@ void AddButtons::button(HWND hWnd)
 
     //sixth row
     //inverse Sine
-    HWND h_Sininv = CreateWindow(L"BUTTON", L"", dwStyleBMP, 15, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_SINE_PRESSED, NULL, NULL);
-    HICON invsin = LoadIcon(hInstance, MAKEINTRESOURCE(SININV));
-    if (invsin == NULL) {
-        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
-    }
-    SendMessage(h_Sininv, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)invsin);
+    HWND h_Sininv = CreateWindow(L"BUTTON", L"arc-sin", dwStyle, 15, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_SINE_PRESSED, NULL, NULL);
     //inverse Cosine
-    HWND h_Cosinv = CreateWindow(L"BUTTON", L"", dwStyleBMP, 182.25, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_COSINE_PRESSED, NULL, NULL);
-    HICON invcos = LoadIcon(hInstance, MAKEINTRESOURCE(COSINV));
-    if (invcos == NULL) {
-        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
-    }
-    SendMessage(h_Cosinv, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)invcos);
+    HWND h_Cosinv = CreateWindow(L"BUTTON", L"arc-cos", dwStyle, 182.25, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_COSINE_PRESSED, NULL, NULL);
     //inverse Tangent
-    HWND h_Taninv = CreateWindow(L"BUTTON", L"", dwStyleBMP, 349.5, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_TANGENT_PRESSED, NULL, NULL);
-    HICON invtan = LoadIcon(hInstance, MAKEINTRESOURCE(TANINV));
-    if (invtan == NULL) {
-        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
-    }
-    SendMessage(h_Taninv, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)invtan);
-    HWND h_Radical = CreateWindow(L"BUTTON", L"", dwStyleBMP, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)RADICAL_PRESSED, NULL, NULL);
-    HICON radical = LoadIcon(hInstance, MAKEINTRESOURCE(RADICAL));
-    if (radical == NULL)
-    {
-        MessageBox(hWnd, L"Image failed to load", L"Error", 1);
-    }
-    SendMessage(h_Radical, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)radical);
+    HWND h_Taninv = CreateWindow(L"BUTTON", L"arc-tan", dwStyle, 349.5, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_TANGENT_PRESSED, NULL, NULL);
+    HWND h_Radical = CreateWindow(L"BUTTON", L"delete", dwStyle, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)DELETE_PRESSED, NULL, NULL);
 }
 
 

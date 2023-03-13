@@ -1,9 +1,5 @@
 #include "AddMenus.h"
 
-#define MENU_HELP 1
-#define FILE_MENU_EXIT 2
-#define FILE_MENU_SETTINGS 3
-
 void AddMenus::AddMenuBar(HWND hWnd)
 {
     HMENU hMenu;
