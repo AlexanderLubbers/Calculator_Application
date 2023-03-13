@@ -25,10 +25,13 @@ Calculator_Screen::Calculator_Screen()
 	//hopefully this code will actually create the json file
 	StringBuffer buf;
 	Writer<StringBuffer> writer(buf);
-	document.Accept(writer);
-	ofstream file("data.json");
-	file << buf.GetString();
-	file.close();
+	//this line of code converts or serializes document into a stream
+	//a stream is simply an abstract representation of a sequence of data that can be read from or written to
+	//this stream will allow the user
+	//in other words this line of code seems to be an important step in creating the json file?
+	document.Accept(writer); 
+	ofstream json_file("data.json"); //creates an output file stream object called json_file and opens a new file called data.json for writing?
+	json_file << buf.GetString(); //method is called to retrieve the serialized JSON data as a string. Finally, the serialized JSON data is written to the output file using <<
 }
 
 void Calculator_Screen::receiver(int msg)
