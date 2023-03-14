@@ -1,0 +1,10 @@
+{
+    "Current Equation": "",
+    "Current Answer": "",
+    "Equation History": {
+        "dummy": "foo"
+    },
+    "Answer History": {
+        "test": "test"
+    }
+}
