@@ -1,13 +1,11 @@
 //these have to be included before any class that uses the windows api.
 //in fact that should be done for anything that does not use the winapi
+
 #include "rapidjson/document.h"
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/prettywriter.h"
 
-#include <fstream>
-
 #include "Calculator_Screen.h"
-#include<Windows.h>
 
 using namespace rapidjson;
 using namespace std;
@@ -47,16 +45,11 @@ Calculator_Screen::Calculator_Screen()
 	json_file << buf.GetString(); //method is called to retrieve the serialized JSON data as a string. Finally, the serialized JSON data is written to the output file using <<
 }
 
-void Calculator_Screen::render_screen()
+void Calculator_Screen::render_screen(HDC hdc, string character)
 {
 
 }
 
 void Calculator_Screen::update_json(string character)
 {
-}
-
-void Calculator_Screen::receiver(int msg)
-{
-
 }

@@ -127,8 +127,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PostQuitMessage(0);
         break;
     case WM_CREATE:
+    {
         menu.AddMenuBar(hWnd);
         button.button(hWnd);
+        //find a way to make this text box background white
+        //HWND help = CreateWindowW(L"STATIC", L"Test", WS_VISIBLE | WS_CHILD, 0, 0, 100, 100, hWnd, NULL, NULL, NULL);
+    }
         break;
     case WM_CTLCOLORBTN: //In order to make those edges invisble when we use RoundRect(),
     {                //we make the color of our button's background match window's background

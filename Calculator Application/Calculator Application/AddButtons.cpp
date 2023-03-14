@@ -90,9 +90,9 @@ void AddButtons::button(HWND hWnd)
 
     //fifth row
 
-    HWND h_Log = CreateWindow(L"BUTTON", L"Log", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)LOG_PRESSED, NULL, NULL);
+    HWND h_Log = CreateWindow(L"BUTTON", L"log", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)LOG_PRESSED, NULL, NULL);
 
-    HWND h_LogBASE = CreateWindow(L"BUTTON", L"LogBASE", dwStyle, 126.5, 465, 96.5, 72.5, hWnd, (HMENU)LOGBASE_PRESSED, NULL, NULL);
+    HWND h_LogBASE = CreateWindow(L"BUTTON", L"logBASE", dwStyle, 126.5, 465, 96.5, 72.5, hWnd, (HMENU)LOGBASE_PRESSED, NULL, NULL);
     //0
     HWND h_Zero = CreateWindow(L"BUTTON", L"0", dwStyle, 238, 465, 96.5, 72.5, hWnd, (HMENU)ZERO_PRESSED, NULL, NULL);
 

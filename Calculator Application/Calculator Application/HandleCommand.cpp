@@ -5,7 +5,7 @@ Calculator_Screen s;
 
 void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
 {
-    int screen_message = 0;
+    string screen_message = "";
     switch (wParam)
     {
     case MENU_HELP:
@@ -15,106 +15,106 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         DestroyWindow(hWnd);
         break;
     case LEFT_PARENTHESES_PRESSED:
-        screen_message = 1;
+        screen_message = "(";
         break;
     case RIGHT_PARENTHESES_PRESSED:
-        screen_message = 2;
+        screen_message = ")";
         break;
     case DECIMAL_PRESSED:
-        screen_message = 3;
+        screen_message = ".";
         break;
     case NEGATIVE_PRESSED:
-        screen_message = 4;
+        screen_message = "-";
         break;
     case HISTORY_PRESSED:
-        screen_message = 5;
+        screen_message = "";
         break;
     case CLEAR_PRESSED:
-        screen_message = 6;
+        screen_message = "";
         break;
     case SQROOT_PRESSED:
-        screen_message = 7;
+        screen_message = "sqrt(";
         break;
     case SEVEN_PRESSED:
-        screen_message = 8;
+        screen_message = "7";
         break;
     case EIGHT_PRESSED:
-        screen_message = 9;
+        screen_message = "8";
         break;
     case NINE_PRESSED:
-        screen_message = 10;
+        screen_message = "9";
         break;
     case DIVIDE_PRESSED:
-        screen_message = 11;
+        screen_message = "/";
         break;
     case PI_PRESSED:
-        screen_message = 12;
+        screen_message = "pi";
         break;
     case EXPONENT_PRESSED:
-        screen_message = 13;
+        screen_message = "^";
         break;
     case FOUR_PRESSED:
-        screen_message = 14;
+        screen_message = "4";
         break;
     case FIVE_PRESSED:
-        screen_message = 15;
+        screen_message = "5";
         break;
     case SIX_PRESSESD:
-        screen_message = 16;
+        screen_message = "6";
         break;
     case MULTIPLY_PRESSED:
-        screen_message = 17;
+        screen_message = "*";
         break;
     case SINE_PRESSED:
-        screen_message = 18;
+        screen_message = "sin(";
         break;
     case E_PRESSED:
-        screen_message = 19;
+        screen_message = "e";
         break;
     case ONE_PRESSED:
-        screen_message = 20;
+        screen_message = "1";
         break;
     case TWO_PRESSED:
-        screen_message = 21;
+        screen_message = "2";
         break;
     case THREE_PRESSED:
-        screen_message = 22;
+        screen_message = "3";
         break;
     case SUBTRACT_PRESSED:
-        screen_message = 23;
+        screen_message = "--";
         break;
     case COSINE_PRESSED:
-        screen_message = 24;
+        screen_message = "cos(";
         break;
     case LOG_PRESSED:
-        screen_message = 25;
+        screen_message = "log(";
         break;
     case LOGBASE_PRESSED:
-        screen_message = 26;
+        screen_message = "logBASE(";
         break;
     case ZERO_PRESSED:
-        screen_message = 27;
+        screen_message = "0";
         break;
     case COMMA_PRESSED:
-        screen_message = 28;
+        screen_message = ",";
         break;
     case ADD_PRESSED:
-        screen_message = 29;
+        screen_message = "+";
         break;
     case TANGENT_PRESSED:
-        screen_message = 30;
+        screen_message = "tan(";
         break;
     case INVERSE_SINE_PRESSED:
-        screen_message = 31;
+        screen_message = "arc-sin(";
         break;
     case INVERSE_COSINE_PRESSED:
-        screen_message = 32;
+        screen_message = "arc-cos(";
         break;
     case INVERSE_TANGENT_PRESSED:
-        screen_message = 33;
+        screen_message = "arc-tan(";
         break;
     case DELETE_PRESSED:
-        screen_message = 34;
+        screen_message = "";
         break;
     }
 }
