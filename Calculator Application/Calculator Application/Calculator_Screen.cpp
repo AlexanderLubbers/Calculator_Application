@@ -50,6 +50,23 @@ void Calculator_Screen::render_screen(HDC hdc, string character)
 
 }
 
-void Calculator_Screen::update_json(string character)
+void Calculator_Screen::update_json(string character, bool special_msg)
 {
+	//This is how the program will handle messages sent by the buttons when they are clicked
+	//This will sort the message into two categories so that they can be correctly stored in the json
+	if (special_msg == false) 
+	{
+		// Read the JSON file into a string
+
+		//put that string into a document
+
+	}
+	else 
+	{
+		//handle the delete button
+		if (character == "DELETE")
+		{
+
+		}
+	}
 }
