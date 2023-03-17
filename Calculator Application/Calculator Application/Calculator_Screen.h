@@ -1,9 +1,11 @@
 #pragma once
 
-
-#include <fstream>
-#include<Windows.h>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cstdio>
+#include <cstring>
+#include<Windows.h>
 using namespace std;
 
 class Calculator_Screen
