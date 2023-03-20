@@ -80,7 +80,8 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 		char* buffer = new char[len];
 		strcpy(buffer, equation_update.GetString());
 		strcat(buffer, msg);
-		equation_update.SetString(buffer, len, json.GetAllocator());
+		string new_msg = buffer;
+		equation_update.SetString(new_msg.c_str(), new_msg.length(), json.GetAllocator());
 		//deallocate that memory to avoid memory leaks
 		delete[] buffer;
 
@@ -91,6 +92,7 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 		
 		ofstream update_file("calculator_data.json");
 		update_file << buffer_out.GetString() << endl;
+		json_cleanup();
 
 	}
 	else 
