@@ -17,6 +17,7 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
     case LEFT_PARENTHESES_PRESSED:
         screen_message = "(";
         s.update_json(screen_message, false);
+        s.render_screen(hWnd, screen_message);
         break;
     case RIGHT_PARENTHESES_PRESSED:
         screen_message = ")";

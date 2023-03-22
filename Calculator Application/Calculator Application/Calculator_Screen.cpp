@@ -47,9 +47,31 @@ Calculator_Screen::Calculator_Screen()
 	json_file << buf.GetString() << endl; //method is called to retrieve the serialized JSON data as a string. Finally, the serialized JSON data is written to the output file using <<
 }
 
-void Calculator_Screen::render_screen(HDC hdc, string character)
+void Calculator_Screen::render_screen(HWND hwnd, string character)
 {
+	//hdc means handle device context
+	//it is a data structure that handles graphic objects and their associated attributes
 
+	//get the hdc
+	HDC hdc = GetDC(hwnd);
+
+	//make the text size larger and make the font arial
+	HFONT hFont = CreateFont(74, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
+	
+	HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+	
+	// Set text color
+	SetTextColor(hdc, RGB(0, 0, 0)); // Red color
+
+	// Set text background color
+	SetBkColor(hdc, RGB(255, 255, 255)); // White background color
+
+	// Draw text
+	TextOut(hdc, 10, 20, L"Hello, World!", 13);
+
+	//cleanup
+	SelectObject(hdc, hOldFont);
+	DeleteObject(hFont);
 }
 
 void Calculator_Screen::update_json(string character, bool special_msg)
@@ -92,7 +114,6 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 		
 		ofstream update_file("calculator_data.json");
 		update_file << buffer_out.GetString() << endl;
-		json_cleanup();
 
 	}
 	else 
