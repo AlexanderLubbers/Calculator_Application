@@ -13,7 +13,7 @@ class Calculator_Screen
 public:
 	//a constructor is a function that gets called when a class is initialized
 	Calculator_Screen();
-	void render_screen(HWND hwnd, string character);
+	void render_screen(HWND hwnd);
 	void update_json(string character, bool special_msg);
 };
 
