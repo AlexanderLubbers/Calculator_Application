@@ -116,7 +116,7 @@ void AddButtons::button(HWND hWnd)
     HWND h_Cosinv = CreateWindow(L"BUTTON", L"arc-cos", dwStyle, 182.25, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_COSINE_PRESSED, NULL, NULL);
     //inverse Tangent
     HWND h_Taninv = CreateWindow(L"BUTTON", L"arc-tan", dwStyle, 349.5, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_TANGENT_PRESSED, NULL, NULL);
-    HWND h_Radical = CreateWindow(L"BUTTON", L"delete", dwStyle, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)DELETE_PRESSED, NULL, NULL);
+    HWND h_Radical = CreateWindow(L"BUTTON", L"enter", dwStyle, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)ENTER_PRESSED, NULL, NULL);
 }
 
 

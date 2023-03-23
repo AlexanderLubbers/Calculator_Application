@@ -17,12 +17,12 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
     case LEFT_PARENTHESES_PRESSED:
         screen_message = "(";
         s.update_json(screen_message, false);
-        //s.render_screen(hWnd);
+        s.render_screen(hWnd);
         break;
     case RIGHT_PARENTHESES_PRESSED:
         screen_message = ")";
         s.update_json(screen_message, false);
-        //s.render_screen(hWnd, screen_message);
+        s.render_screen(hWnd);
         break;
     case DECIMAL_PRESSED:
         screen_message = ".";
@@ -148,7 +148,7 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         screen_message = "arc-tan(";
         s.update_json(screen_message, false);
         break;
-    case DELETE_PRESSED:
+    case ENTER_PRESSED:
         screen_message = "DELETE";
         s.update_json(screen_message, true);
         break;
