@@ -1,12 +1,24 @@
+
 //this line of code tells the linker also known as the compiler that it will need the Microsoft Windows Common-Conrols
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
 processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"") 
 
+#include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+#include "rapidjson/prettywriter.h"
+
+#include "Global.h"
+
+#include <fstream>
+#include <sstream>
+
+
 #include "framework.h"
 #include "CalculatorApplication.h"
 #include "resource.h"
 #include "HandleCommand.h"
+
 
 #define MAX_LOADSTRING 100
 
@@ -21,8 +33,20 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 AddMenus menu;
 AddButtons button;
 HandleCommand hacom;
+Global b;
 
 
+void screen_startup(HWND hwnd)
+{
+    stringstream ss;
+    fstream file;
+    file.open("calculator_data.json");
+    if (file)
+    {
+        
+    }
+    b.startup = false;
+}
 //   FUNCTION: InitInstance(HINSTANCE, int)
 //   PURPOSE: Saves instance handle and creates main window
 //   COMMENTS:In this function, we save the instance handle in a global variable and
@@ -120,6 +144,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        
+        
+        EndPaint(hWnd, &ps);
+    }
+    break;
     case WM_COMMAND:
         hacom.handle_command(hWnd, wParam);
     break;

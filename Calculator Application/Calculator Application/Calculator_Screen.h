@@ -15,6 +15,5 @@ public:
 	Calculator_Screen();
 	void render_screen(HWND hwnd);
 	void update_json(string character, bool special_msg);
-	LPCWSTR convert_to_lpcwstr(string text);
 };
 

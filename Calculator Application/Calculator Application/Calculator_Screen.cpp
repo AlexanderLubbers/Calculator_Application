@@ -7,10 +7,13 @@
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/prettywriter.h"
 
+#include "Global.h"
 #include "Calculator_Screen.h"
 
 using namespace rapidjson;
 using namespace std;
+
+Global g;
 
 Calculator_Screen::Calculator_Screen()
 {
@@ -73,7 +76,6 @@ void Calculator_Screen::render_screen(HWND hwnd)
 		MessageBox(hwnd, L"You have reached the maximum length for an equation", L"Error", 1);
 		return;
 	}
-	LPCWSTR screen_text = convert_to_lpcwstr(text);
 	//hdc means handle device context
 	//it is a data structure that handles graphic objects and their associated attributes
 	
@@ -92,7 +94,7 @@ void Calculator_Screen::render_screen(HWND hwnd)
 	SetBkColor(hdc, RGB(255, 255, 255)); // White background color
 	// Draw text
 	//TextOut(hdc, 1, 20, screen_text, text.length());
-	LPCWSTR screen_message = convert_to_lpcwstr(text);
+	LPCWSTR screen_message = g.convert_to_lpcwstr(text);
 	TextOut(hdc, 10, 20, screen_message, text.length());
 
 	//cleanup
@@ -154,14 +156,4 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 
 		}
 	}
-}
-
-LPCWSTR Calculator_Screen::convert_to_lpcwstr(string text)
-{
-	// Convert the std::string to LPCWSTR
-	int size_needed = MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, NULL, 0);
-	wchar_t* wstr = new wchar_t[size_needed];
-	MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, wstr, size_needed);
-	LPCWSTR result = wstr;
-	return wstr;
 }

@@ -133,6 +133,7 @@
     <ClInclude Include="CalculatorApplication.h" />
     <ClInclude Include="Calculator_Screen.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="HandleCommand.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Resource.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="AddMenus.cpp" />
     <ClCompile Include="CalculatorApplication.cpp" />
     <ClCompile Include="Calculator_Screen.cpp" />
+    <ClCompile Include="Global.cpp" />
     <ClCompile Include="HandleCommand.cpp" />
     <ClCompile Include="Math.cpp" />
   </ItemGroup>
