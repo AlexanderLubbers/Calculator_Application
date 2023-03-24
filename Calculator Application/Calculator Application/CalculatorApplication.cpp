@@ -12,6 +12,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 
 #include "framework.h"
@@ -35,7 +36,8 @@ AddButtons button;
 HandleCommand hacom;
 Global b;
 
-
+using namespace rapidjson;
+using namespace std;
 void screen_startup(HWND hwnd)
 {
     stringstream ss;
@@ -43,7 +45,35 @@ void screen_startup(HWND hwnd)
     file.open("calculator_data.json");
     if (file)
     {
-        
+        //parse json into string
+        ss << file.rdbuf();
+        string json_str = ss.str();
+        //parse string into document object
+        Document doc;
+        doc.Parse(json_str.c_str());
+        //get the string stored in "current equation"
+        string text = doc["Current Equation"].GetString();
+        //get the hdc
+        HDC hdc = GetDC(hwnd);
+
+        //make the text size larger and make the font arial
+        HFONT hFont = CreateFont(74, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
+
+        HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+        // Set text color
+        SetTextColor(hdc, RGB(0, 0, 0)); // Red color
+
+        // Set text background color
+        SetBkColor(hdc, RGB(255, 255, 255)); // White background color
+        // Draw text
+        //TextOut(hdc, 1, 20, screen_text, text.length());
+        LPCWSTR screen_message = b.convert_to_lpcwstr(text);
+        TextOut(hdc, 10, 20, screen_message, text.length());
+
+        //cleanup
+        SelectObject(hdc, hOldFont);
+        DeleteObject(hFont);
     }
     b.startup = false;
 }
@@ -149,7 +179,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
         
-        
+        screen_startup(hWnd);
         EndPaint(hWnd, &ps);
     }
     break;
