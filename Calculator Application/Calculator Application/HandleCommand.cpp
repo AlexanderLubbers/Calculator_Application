@@ -178,7 +178,7 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case ENTER_PRESSED:
-        screen_message = "DELETE";
+        screen_message = "ENTER";
         s.update_json(screen_message, true);
         s.render_screen(hWnd);
         break;

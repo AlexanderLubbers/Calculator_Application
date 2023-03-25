@@ -95,6 +95,16 @@ void Calculator_Screen::render_screen(HWND hwnd)
 	// Draw text
 	//TextOut(hdc, 1, 20, screen_text, text.length());
 	LPCWSTR screen_message = g.convert_to_lpcwstr(text);
+
+	//erase everything in a given rectangle
+	// Invalidate the rectangle that encloses the text
+	RECT rect;
+	rect.left = 10;
+	rect.top = 10;
+	rect.right = 600; // adjust these values to cover the entire area where the text was drawn
+	rect.bottom = 100;
+	InvalidateRect(hwnd, &rect, TRUE);
+
 	TextOut(hdc, 10, 20, screen_message, text.length());
 
 	//cleanup
@@ -146,12 +156,35 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 	}
 	else 
 	{
-		//handle the delete button
-		if (character == "DELETE")
+		if (character == "CLEAR")
+		{
+			ifstream file("calculator_data.json");
+			ss << file.rdbuf();
+			string json_str = ss.str();
+
+			Document json;
+			json.Parse(json_str.c_str());
+
+			Value& equation = json["Current Equation"];
+			equation.SetString("");
+
+			StringBuffer buf;
+			PrettyWriter<StringBuffer> writer(buf);
+			json.Accept(writer);
+
+			ofstream update_file("calculator_data.json");
+			update_file << buf.GetString() << endl;
+			
+			// Get a handle to the current window
+			HWND hwnd = GetForegroundWindow();
+
+			render_screen(hwnd);
+		}
+		else if (character == "ENTER")
 		{
 
 		}
-		else 
+		else
 		{
 
 		}
