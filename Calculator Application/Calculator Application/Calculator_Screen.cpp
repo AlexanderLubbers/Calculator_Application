@@ -76,24 +76,23 @@ void Calculator_Screen::render_screen(HWND hwnd)
 		MessageBox(hwnd, L"You have reached the maximum length for an equation", L"Error", 1);
 		return;
 	}
+	
+	// Create a new font
+	LOGFONT lf = { 0 };
+	lf.lfHeight = 10; // set font height to a certain amount of pixels
+	lf.lfWeight = FW_NORMAL;
+	lf.lfCharSet = DEFAULT_CHARSET;
+	lstrcpy(lf.lfFaceName, TEXT("Arial"));
+	HFONT hFont = CreateFontIndirect(&lf);
+	
+	
 	//hdc means handle device context
 	//it is a data structure that handles graphic objects and their associated attributes
-	
 	//get the hdc
 	HDC hdc = GetDC(hwnd);
 
-	//make the text size larger and make the font arial
-	HFONT hFont = CreateFont(74, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
-	
-	HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
-	
-	// Set text color
-	SetTextColor(hdc, RGB(0, 0, 0)); // Red color
+	SelectObject(hdc, hFont);
 
-	// Set text background color
-	SetBkColor(hdc, RGB(255, 255, 255)); // White background color
-	// Draw text
-	//TextOut(hdc, 1, 20, screen_text, text.length());
 	LPCWSTR screen_message = g.convert_to_lpcwstr(text);
 
 	//erase everything in a given rectangle
@@ -101,15 +100,17 @@ void Calculator_Screen::render_screen(HWND hwnd)
 	RECT rect;
 	rect.left = 10;
 	rect.top = 10;
-	rect.right = 600; // adjust these values to cover the entire area where the text was drawn
+	rect.right = 1000; // adjust these values to cover the entire area where the text was drawn
 	rect.bottom = 100;
 	InvalidateRect(hwnd, &rect, TRUE);
 
-	TextOut(hdc, 10, 20, screen_message, text.length());
+	HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
 
+	TextOut(hdc, 10, 35, screen_message, text.length());
 	//cleanup
 	SelectObject(hdc, hOldFont);
 	DeleteObject(hFont);
+	ReleaseDC(hwnd, hdc);
 }
 
 void Calculator_Screen::update_json(string character, bool special_msg)

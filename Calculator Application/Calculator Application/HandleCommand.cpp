@@ -163,17 +163,17 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case INVERSE_SINE_PRESSED:
-        screen_message = "arc-sin(";
+        screen_message = "sin-1(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
     case INVERSE_COSINE_PRESSED:
-        screen_message = "arc-cos(";
+        screen_message = "cos-1(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
     case INVERSE_TANGENT_PRESSED:
-        screen_message = "arc-tan(";
+        screen_message = "tan-1(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;

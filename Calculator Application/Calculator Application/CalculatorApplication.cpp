@@ -56,24 +56,23 @@ void screen_startup(HWND hwnd)
         //get the hdc
         HDC hdc = GetDC(hwnd);
 
-        //make the text size larger and make the font arial
-        HFONT hFont = CreateFont(74, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
+        // Create a new font
+        LOGFONT lf = { 0 };
+        lf.lfHeight = 50; // set font height to a certain amount of pixels
+        lf.lfWeight = FW_NORMAL;
+        lf.lfCharSet = DEFAULT_CHARSET;
+        lstrcpy(lf.lfFaceName, TEXT("Arial"));
+        HFONT hFont = CreateFontIndirect(&lf);
 
         HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
 
-        // Set text color
-        SetTextColor(hdc, RGB(0, 0, 0)); // Red color
-
-        // Set text background color
-        SetBkColor(hdc, RGB(255, 255, 255)); // White background color
-        // Draw text
-        //TextOut(hdc, 1, 20, screen_text, text.length());
         LPCWSTR screen_message = b.convert_to_lpcwstr(text);
-        TextOut(hdc, 10, 20, screen_message, text.length());
+        TextOut(hdc, 10, 35, screen_message, text.length());
 
         //cleanup
         SelectObject(hdc, hOldFont);
         DeleteObject(hFont);
+        ReleaseDC(hwnd, hdc);
     }
     b.startup = false;
 }
