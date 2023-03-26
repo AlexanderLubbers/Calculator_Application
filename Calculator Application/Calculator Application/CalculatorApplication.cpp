@@ -19,6 +19,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "CalculatorApplication.h"
 #include "resource.h"
 #include "HandleCommand.h"
+#include "HandleMenu.h"
 
 
 #define MAX_LOADSTRING 100
@@ -35,6 +36,7 @@ AddMenus menu;
 AddButtons button;
 HandleCommand hacom;
 Global b;
+HandleMenu m;
 
 using namespace rapidjson;
 using namespace std;
@@ -183,6 +185,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     break;
     case WM_COMMAND:
+        m.handle_menu(hWnd, wParam);
         hacom.handle_command(hWnd, wParam);
     break;
     case WM_DESTROY:

@@ -8,12 +8,6 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
     string screen_message = "";
     switch (wParam)
     {
-    case MENU_HELP:
-        MessageBox(hWnd, L"This is a Calculator application. Enter numbers in by clicking the buttons displaying that number and click the buttons with the operation you wish to perfrom in order to perform that operation on your number", L"Help", 1);
-        break;
-    case FILE_MENU_EXIT:
-        DestroyWindow(hWnd);
-        break;
     case LEFT_PARENTHESES_PRESSED:
         screen_message = "(";
         s.update_json(screen_message, false);
@@ -138,7 +132,7 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case LOGBASE_PRESSED:
-        screen_message = "logBASE(";
+        screen_message = "logB(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
