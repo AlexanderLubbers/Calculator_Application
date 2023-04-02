@@ -9,7 +9,6 @@ void AddMenus::AddMenuBar(HWND hWnd)
     //HMENU hSubMenu = CreateMenu();
 
     AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_SETTINGS, L"Settings");
-    AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_BUTTON_DETAILS, L"Button Details");
     AppendMenuW(hFileMenu, MF_SEPARATOR, NULL, NULL);
     AppendMenuW(hFileMenu, MF_STRING, FILE_MENU_EXIT, L"Exit");
     

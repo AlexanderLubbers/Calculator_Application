@@ -20,6 +20,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "resource.h"
 #include "HandleCommand.h"
 #include "HandleMenu.h"
+#include "Settings.h"
 
 
 #define MAX_LOADSTRING 100
@@ -185,6 +186,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     break;
     case WM_COMMAND:
+        switch (wParam)
+        {
+        case FILE_MENU_SETTINGS:
+            Settings set;
+            set.init_settings(GetModuleHandle(NULL), NULL, NULL, 1);
+            break;
+        }
         m.handle_menu(hWnd, wParam);
         hacom.handle_command(hWnd, wParam);
     break;

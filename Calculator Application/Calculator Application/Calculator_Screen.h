@@ -5,7 +5,7 @@
 #include <sstream>
 #include <cstdio>
 #include <cstring>
-#include<Windows.h>
+#include <Windows.h>
 using namespace std;
 
 class Calculator_Screen
