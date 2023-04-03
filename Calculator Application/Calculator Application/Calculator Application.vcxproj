@@ -158,6 +158,7 @@
   <ItemGroup>
     <Image Include="CalculatorApplication.ico" />
     <Image Include="Calculator.ico" />
+    <Image Include="gear.ico" />
     <Image Include="small.ico" />
     <Image Include="sqroot.ico" />
   </ItemGroup>

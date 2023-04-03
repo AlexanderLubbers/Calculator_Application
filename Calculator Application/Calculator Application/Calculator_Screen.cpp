@@ -71,7 +71,7 @@ void Calculator_Screen::render_screen(HWND hwnd)
 	Document doc;
 	doc.Parse(json_str.c_str());
 	string text = doc["Current Equation"].GetString();
-	if (text.length() > 101)
+	if (text.length() > 30)
 	{
 		MessageBox(hwnd, L"You have reached the maximum length for an equation", L"Error", 1);
 		return;
@@ -95,12 +95,11 @@ void Calculator_Screen::render_screen(HWND hwnd)
 
 	LPCWSTR screen_message = g.convert_to_lpcwstr(text);
 
-	//erase everything in a given rectangle
-	// Invalidate the rectangle that encloses the text
+	//erase everything in a given rectangle by invalidating that rectance
 	RECT rect;
 	rect.left = 10;
 	rect.top = 10;
-	rect.right = 1000; // adjust these values to cover the entire area where the text was drawn
+	rect.right = 10000; // adjust these values to cover the entire area where the text was drawn
 	rect.bottom = 100;
 	InvalidateRect(hwnd, &rect, TRUE);
 
