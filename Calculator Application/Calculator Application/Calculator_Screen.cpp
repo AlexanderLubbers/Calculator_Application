@@ -41,6 +41,7 @@ Calculator_Screen::Calculator_Screen()
 		document.AddMember("Current Answer", "", document.GetAllocator());
 		document.AddMember("Equation History", EquationHistory, document.GetAllocator());
 		document.AddMember("Answer History", AnswerHistory, document.GetAllocator());
+		document.AddMember("Mode", "Light Mode", document.GetAllocator());
 
 		// Serialize the JSON document to a file
 		//hopefully this code will actually create the json file
@@ -99,7 +100,7 @@ void Calculator_Screen::render_screen(HWND hwnd)
 	RECT rect;
 	rect.left = 10;
 	rect.top = 10;
-	rect.right = 10000; // adjust these values to cover the entire area where the text was drawn
+	rect.right = 10000; 
 	rect.bottom = 100;
 	InvalidateRect(hwnd, &rect, TRUE);
 
@@ -188,5 +189,60 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 		{
 
 		}
+	}
+}
+
+void Calculator_Screen::handle_mode(int message, HWND hwnd)
+{
+	if (message == 0)
+	{
+		MessageBox(hwnd, L"help me", L"ahhhhhhh", 1);
+		stringstream ss;
+		ifstream file("calculator_data.json");
+
+		//parse the json into a string
+		ss << file.rdbuf();
+		string json_str = ss.str();
+
+		//parse the string into a document object
+		Document doc;
+		doc.Parse(json_str.c_str());
+		string light_mode = "Light Mode";
+		
+		Value& mode = doc["Mode"];
+
+		mode.SetString(light_mode.c_str(), light_mode.length(), doc.GetAllocator());
+
+		StringBuffer buffer_out;
+		PrettyWriter<StringBuffer> writer(buffer_out);
+		doc.Accept(writer);
+
+		ofstream update_file("calculator_data.json");
+		update_file << buffer_out.GetString() << endl;
+		
+	}
+	if(message == 1)
+	{
+		MessageBox(hwnd, L"Ahh", L"ahh", 1);
+		stringstream ss;
+		ifstream file("calculator_data.json");
+
+		ss << file.rdbuf();
+		string json_str = ss.str();
+
+		Document doc;
+		doc.Parse(json_str.c_str());
+
+		string dark_mode = "Dark Mode";
+
+		Value& mode = doc["Mode"];
+		mode.SetString(dark_mode.c_str(), dark_mode.length(), doc.GetAllocator());
+
+		StringBuffer buffer_out;
+		PrettyWriter<StringBuffer> writer(buffer_out);
+		doc.Accept(writer);
+
+		ofstream update_file("calculator_data.json");
+		update_file << buffer_out.GetString() << endl;
 	}
 }

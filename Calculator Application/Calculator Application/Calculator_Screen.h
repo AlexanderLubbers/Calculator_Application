@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <cstdio>
 #include <cstring>
 #include <Windows.h>
 using namespace std;
@@ -15,5 +14,6 @@ public:
 	Calculator_Screen();
 	void render_screen(HWND hwnd);
 	void update_json(string character, bool special_msg);
+	void handle_mode(int message, HWND hwnd);
 };
 

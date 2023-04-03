@@ -1,4 +1,5 @@
 #include "Settings.h"
+#include "Calculator_Screen.h"
 #include "resource.h"
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -36,13 +37,33 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 	case WM_CREATE:
 	{
-		HWND hComboBox = CreateWindowEx(0, WC_COMBOBOX, L"", CBS_DROPDOWN | CBS_HASSTRINGS | WS_CHILD | WS_OVERLAPPED | WS_VISIBLE, 10, 40, 200, 300, hwnd, NULL, NULL, NULL);
+		HWND hComboBox = CreateWindowEx(0, WC_COMBOBOX, L"", CBS_DROPDOWNLIST | CBS_HASSTRINGS | WS_CHILD | WS_OVERLAPPED | WS_VISIBLE, 10, 40, 200, 300, hwnd, NULL, NULL, NULL);
+		SendMessage(hComboBox, (UINT)CB_ADDSTRING, (WPARAM)0, (LPARAM)TEXT("Light Mode"));
+		SendMessage(hComboBox, (UINT)CB_ADDSTRING, (WPARAM)0, (LPARAM)TEXT("Dark Mode"));
+		SendMessage(hComboBox, (UINT)CB_SETCURSEL, (WPARAM)0, (LPARAM)TEXT("Light Mode"));
 	}
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
+	case WM_COMMAND:
+		if (HIWORD(wParam) == CBN_SELCHANGE)
+			// If the user makes a selection from the list:
+			//   Send CB_GETCURSEL message to get the index of the selected list item.
+			//   Send CB_GETLBTEXT message to get the item.
+			//   Display the item in a messagebox.
+		{
+			int ItemIndex = SendMessage((HWND)lParam, (UINT)CB_GETCURSEL,
+				(WPARAM)0, (LPARAM)0);
+			TCHAR  ListItem[256];
+			//list item is what is currently selected in the box
+			(TCHAR)SendMessage((HWND)lParam, (UINT)CB_GETLBTEXT,
+				(WPARAM)ItemIndex, (LPARAM)ListItem);
+			Calculator_Screen cs;
+			cs.handle_mode(ItemIndex, hwnd);
+			
+		}
+		break;
 	}
-
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
