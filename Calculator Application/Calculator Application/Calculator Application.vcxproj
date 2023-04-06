@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClInclude Include="AddButtons.h" />
     <ClInclude Include="AddMenus.h" />
+    <ClInclude Include="BackgroundHandler.h" />
     <ClInclude Include="CalculatorApplication.h" />
     <ClInclude Include="Calculator_Screen.h" />
     <ClInclude Include="framework.h" />
@@ -144,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="AddButtons.cpp" />
     <ClCompile Include="AddMenus.cpp" />
+    <ClCompile Include="BackgroundHandler.cpp" />
     <ClCompile Include="CalculatorApplication.cpp" />
     <ClCompile Include="Calculator_Screen.cpp" />
     <ClCompile Include="Global.cpp" />

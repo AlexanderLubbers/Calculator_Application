@@ -9,6 +9,7 @@
 
 #include "Global.h"
 #include "Calculator_Screen.h"
+#include "CalculatorApplication.h"
 
 using namespace rapidjson;
 using namespace std;
@@ -192,11 +193,10 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 	}
 }
 
-void Calculator_Screen::handle_mode(int message, HWND hwnd)
+void Calculator_Screen::handle_mode(int message)
 {
 	if (message == 0)
 	{
-		MessageBox(hwnd, L"help me", L"ahhhhhhh", 1);
 		stringstream ss;
 		ifstream file("calculator_data.json");
 
@@ -219,11 +219,17 @@ void Calculator_Screen::handle_mode(int message, HWND hwnd)
 
 		ofstream update_file("calculator_data.json");
 		update_file << buffer_out.GetString() << endl;
-		
+
+		HWND hParent_wnd = FindWindow(L"Calculator App", L"Calculator");
+		//hdc means handle to a device context
+		//it is used to perform graphical operations on the associated device
+		//this graphical operations range from drawing on the screen and writing out text
+		HDC hdc = GetDC(hParent_wnd);
+		SendMessage(hParent_wnd, WM_ERASEBKGND, (WPARAM)hdc, NULL);
+		ReleaseDC(hParent_wnd, hdc);
 	}
 	if(message == 1)
 	{
-		MessageBox(hwnd, L"Ahh", L"ahh", 1);
 		stringstream ss;
 		ifstream file("calculator_data.json");
 
@@ -244,5 +250,10 @@ void Calculator_Screen::handle_mode(int message, HWND hwnd)
 
 		ofstream update_file("calculator_data.json");
 		update_file << buffer_out.GetString() << endl;
+
+		HWND hParent_wnd = FindWindow(L"Calculator App", L"Calculator");
+		HDC hdc = GetDC(hParent_wnd);
+		SendMessage(hParent_wnd, WM_ERASEBKGND, (WPARAM)hdc, NULL);
+		ReleaseDC(hParent_wnd, hdc);
 	}
 }

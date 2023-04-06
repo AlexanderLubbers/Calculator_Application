@@ -4,8 +4,12 @@
 #include <fstream>
 #include <sstream>
 #include <cstring>
+
+#include "BackgroundHandler.h"
 #include <Windows.h>
 using namespace std;
+
+extern UINT uMsgMyMessage;
 
 class Calculator_Screen
 {
@@ -14,6 +18,6 @@ public:
 	Calculator_Screen();
 	void render_screen(HWND hwnd);
 	void update_json(string character, bool special_msg);
-	void handle_mode(int message, HWND hwnd);
+	void handle_mode(int message);
 };
 

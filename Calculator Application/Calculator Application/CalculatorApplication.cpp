@@ -21,9 +21,14 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #include "HandleCommand.h"
 #include "HandleMenu.h"
 #include "Settings.h"
+#include "BackgroundHandler.h"
 
 
 #define MAX_LOADSTRING 100
+
+#define WM_BGCHANGE (WM_USER + 1)
+
+UINT uMsgMyMessage = RegisterWindowMessage(TEXT("MyCustomMessage"));
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
@@ -38,6 +43,8 @@ AddButtons button;
 HandleCommand hacom;
 Global b;
 HandleMenu m;
+
+//create custom window message
 
 using namespace rapidjson;
 using namespace std;
@@ -88,7 +95,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     hInst = hInstance; // Store instance handle in our global variable
 
     DWORD dwStyle = (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU);
-    HWND hWnd = CreateWindowW(szWindowClass, szTitle, dwStyle,
+    HWND hWnd = CreateWindowW(L"Calculator App", L"Calculator", dwStyle,
         200, 0, 700, 700, nullptr, nullptr, hInstance, nullptr);
 
     if (!hWnd)
@@ -119,7 +126,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_CALCULATORAPPLICATION);
-    wcex.lpszClassName = szWindowClass;
+    wcex.lpszClassName = L"Calculator App";
     wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_ICON1));
 
     return RegisterClassExW(&wcex);
@@ -159,9 +166,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
     return (int) msg.wParam;
 }
-
-
-
 
 
 //
@@ -210,6 +214,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return (LRESULT)GetSysColorBrush(COLOR_WINDOW + 1);
     }
     break;
+    case WM_BGCHANGE:
+        MessageBox(hWnd, L"Siuuuu", L"Siuuuuuu", 1);
+        break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
         return 0;

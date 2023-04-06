@@ -60,7 +60,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			(TCHAR)SendMessage((HWND)lParam, (UINT)CB_GETLBTEXT,
 				(WPARAM)ItemIndex, (LPARAM)ListItem);
 			Calculator_Screen cs;
-			cs.handle_mode(ItemIndex, hwnd);
+			cs.handle_mode(ItemIndex);
 			
 		}
 		break;
