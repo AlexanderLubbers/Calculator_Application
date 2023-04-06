@@ -26,10 +26,6 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
 #define MAX_LOADSTRING 100
 
-#define WM_BGCHANGE (WM_USER + 1)
-
-UINT uMsgMyMessage = RegisterWindowMessage(TEXT("MyCustomMessage"));
-
 // Global Variables:
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
@@ -37,12 +33,12 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-
 AddMenus menu;
 AddButtons button;
 HandleCommand hacom;
 Global b;
 HandleMenu m;
+BackgroundHandler bh;
 
 //create custom window message
 
@@ -186,6 +182,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HDC hdc = BeginPaint(hWnd, &ps);
         
         screen_startup(hWnd);
+
+        
         EndPaint(hWnd, &ps);
     }
     break;
@@ -214,9 +212,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return (LRESULT)GetSysColorBrush(COLOR_WINDOW + 1);
     }
     break;
-    case WM_BGCHANGE:
-        MessageBox(hWnd, L"Siuuuu", L"Siuuuuuu", 1);
-        break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
         return 0;

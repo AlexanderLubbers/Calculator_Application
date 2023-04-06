@@ -6,7 +6,7 @@
 
 using namespace rapidjson;
 
-void BackgroundHandler::handle_background(WPARAM wParam, HWND hwnd)
+void BackgroundHandler::handle_background(HWND hwnd)
 {
 	stringstream ss;
 	ifstream file("calculator_data.json");
@@ -20,27 +20,15 @@ void BackgroundHandler::handle_background(WPARAM wParam, HWND hwnd)
 	string mode = doc["Mode"].GetString();
 	if (mode == "Light Mode")
 	{
-		InvalidateRect(hwnd, NULL, TRUE);
-		// Paint the background with the specified brush
-		// Define a global variable to hold the background color
-		HBRUSH g_hBrush = CreateSolidBrush(RGB(255, 255, 255));
-		HDC hdc = (HDC)wParam;
-		RECT rect;
-		GetClientRect(hwnd, &rect);
-		FillRect(hdc, &rect, g_hBrush);
-		UpdateWindow(hwnd);
+		MessageBox(hwnd, L"light", L"help", 1);
+		HDC hdc = GetDC(hwnd);
+		SetBkColor(hdc, RGB(255, 255, 255));
 	}
 	if(mode == "Dark Mode")
 	{
-		InvalidateRect(hwnd, NULL, TRUE);
-		// Paint the background with the specified brush
-		// Define a global variable to hold the background color
-		HBRUSH g_hBrush = CreateSolidBrush(RGB(50, 50, 50));
-		HDC hdc = (HDC)wParam;
-		RECT rect;
-		GetClientRect(hwnd, &rect);
-		FillRect(hdc, &rect, g_hBrush);
-		UpdateWindow(hwnd);
+		MessageBox(hwnd, L"dark", L"ahhhh", 1);
+		HDC hdc = GetDC(hwnd);
+		SetBkColor(hdc, RGB(50, 50, 50));
 	}
 }
 
@@ -52,3 +40,13 @@ void BackgroundHandler::handle_background(WPARAM wParam, HWND hwnd)
 //// set the right and bottom coordinates of the rectangle
 //rect.right = 200;
 //rect.bottom = 200;
+
+////InvalidateRect(hwnd, NULL, TRUE);
+//		// Paint the background with the specified brush
+//		// Define a global variable to hold the background color
+//HBRUSH g_hBrush = CreateSolidBrush(RGB(255, 255, 255));
+//HDC hdc = GetDC(hwnd);
+//RECT rect;
+//GetClientRect(hwnd, &rect);
+//FillRect(hdc, &rect, g_hBrush);
+//UpdateWindow(hwnd);

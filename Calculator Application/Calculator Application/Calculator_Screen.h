@@ -6,10 +6,10 @@
 #include <cstring>
 
 #include "BackgroundHandler.h"
+#include "CalculatorApplication.h"
 #include <Windows.h>
 using namespace std;
 
-extern UINT uMsgMyMessage;
 
 class Calculator_Screen
 {

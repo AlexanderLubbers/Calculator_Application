@@ -11,6 +11,7 @@
 #include "Calculator_Screen.h"
 #include "CalculatorApplication.h"
 
+
 using namespace rapidjson;
 using namespace std;
 
@@ -221,12 +222,13 @@ void Calculator_Screen::handle_mode(int message)
 		update_file << buffer_out.GetString() << endl;
 
 		HWND hParent_wnd = FindWindow(L"Calculator App", L"Calculator");
-		//hdc means handle to a device context
-		//it is used to perform graphical operations on the associated device
-		//this graphical operations range from drawing on the screen and writing out text
-		HDC hdc = GetDC(hParent_wnd);
-		SendMessage(hParent_wnd, WM_ERASEBKGND, (WPARAM)hdc, NULL);
-		ReleaseDC(hParent_wnd, hdc);
+		if (!hParent_wnd)
+		{
+			return;
+		}
+
+		BackgroundHandler bh;
+		bh.handle_background(hParent_wnd);
 	}
 	if(message == 1)
 	{
@@ -252,8 +254,12 @@ void Calculator_Screen::handle_mode(int message)
 		update_file << buffer_out.GetString() << endl;
 
 		HWND hParent_wnd = FindWindow(L"Calculator App", L"Calculator");
-		HDC hdc = GetDC(hParent_wnd);
-		SendMessage(hParent_wnd, WM_ERASEBKGND, (WPARAM)hdc, NULL);
-		ReleaseDC(hParent_wnd, hdc);
+		if (!hParent_wnd)
+		{
+			return;
+		}
+		BackgroundHandler bh;
+		
+		bh.handle_background(hParent_wnd);
 	}
 }

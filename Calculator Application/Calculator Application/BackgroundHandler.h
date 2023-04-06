@@ -11,5 +11,5 @@ using namespace std;
 class BackgroundHandler
 {
 public:
-	void handle_background(WPARAM wParam, HWND hwnd);
+	void handle_background(HWND hwnd);
 };
