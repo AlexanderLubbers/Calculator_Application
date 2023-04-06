@@ -3,3 +3,6 @@ This repo contains a simple calculator project made using the win32 api. The pur
 
 # How You Can Contribute
 if you really want to contribute to this project, then you should fork this repo, make the addition or change that you want and then make a pull request so that I can review and approve you changes
+
+# Known problems
+1. The dark mode feature does not work
