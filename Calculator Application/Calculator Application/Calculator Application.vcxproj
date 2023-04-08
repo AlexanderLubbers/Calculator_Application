@@ -137,6 +137,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="HandleCommand.h" />
     <ClInclude Include="HandleMenu.h" />
+    <ClInclude Include="History.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Settings.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="HandleCommand.cpp" />
     <ClCompile Include="HandleMenu.cpp" />
+    <ClCompile Include="History.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Settings.cpp" />
   </ItemGroup>

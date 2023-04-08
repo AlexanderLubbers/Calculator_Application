@@ -10,6 +10,7 @@
 #include "Global.h"
 #include "Calculator_Screen.h"
 #include "CalculatorApplication.h"
+#include "History.h"
 
 
 using namespace rapidjson;
@@ -189,6 +190,9 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 		}
 		else
 		{
+			//history button clicked
+			History history;
+			history.init_history(NULL, NULL, NULL, 1);
 
 		}
 	}
