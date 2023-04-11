@@ -11,6 +11,7 @@
 #include "Calculator_Screen.h"
 #include "CalculatorApplication.h"
 #include "History.h"
+#include "Math.h"
 
 
 using namespace rapidjson;
@@ -186,7 +187,9 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 		}
 		else if (character == "ENTER")
 		{
-
+			Math math;
+			HWND hwnd = FindWindow(L"Calculator App", L"Calculator");
+			math.Parser(hwnd);
 		}
 		else
 		{

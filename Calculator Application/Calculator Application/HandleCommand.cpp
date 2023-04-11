@@ -67,7 +67,7 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case EXPONENT_PRESSED:
-        screen_message = "^";
+        screen_message = "exp(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;

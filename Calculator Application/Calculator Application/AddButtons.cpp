@@ -249,12 +249,12 @@ void AddButtons::button(HWND hWnd)
     ExponentToolTipInfo.hwnd = hWnd;
     ExponentToolTipInfo.uFlags = Tool_Tip_Flag;
     ExponentToolTipInfo.uId = (UINT_PTR)h_Exponent;
-    ExponentToolTipInfo.lpszText = (LPWSTR)(L"x^y");
+    ExponentToolTipInfo.lpszText = (LPWSTR)(L"exp(base, exponent)");
     SendMessage(hToolTipExponent, TTM_ADDTOOL, 0, (LPARAM)&ExponentToolTipInfo);
 
     SendMessage(hToolTipExponent, TTM_SETMAXTIPWIDTH, 0, 500);
     SendMessage(hToolTipExponent, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipExponent, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"^"));
+    SendMessage(hToolTipExponent, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"exp()"));
 
     //4
     HWND h_Four = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, (HMENU)FOUR_PRESSED, NULL, NULL);

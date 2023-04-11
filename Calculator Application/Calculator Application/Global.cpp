@@ -10,3 +10,8 @@ LPCWSTR Global::convert_to_lpcwstr(string text)
 	return wstr;
 }
 
+auto Global::convert_to_int(string text)
+{
+
+}
+
