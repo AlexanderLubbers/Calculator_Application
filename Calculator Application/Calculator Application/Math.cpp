@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <vector>
+#include "exprtk/exprtk.hpp"
 
 #include "Math.h"
 #include "Global.h"
@@ -24,6 +26,41 @@ string Math::Parser(HWND hwnd)
 	doc.Parse(json_str.c_str());
 
 	string text_to_parse = doc["Current Equation"].GetString();
-	
+
+	//check the parenthesis
+	int leftp_count = 0;
+	int rightp_count = 0;
+
+	for (int i = 0; i < text_to_parse.size(); i++)
+	{
+		if (text_to_parse[i] == ')')
+		{
+			rightp_count++;
+			if (i - 1 > 0)
+			{
+				if (text_to_parse[i - 1] == '(')
+				{
+					MessageBox(hwnd, L"Error", L"Invalid Equation", 1);
+				}
+			}
+		}
+		if (text_to_parse[i] == '(')
+		{
+			leftp_count++;
+			if (i + 1 < text_to_parse.size())
+			{
+				if (text_to_parse[i + 1] == ')')
+				{
+					MessageBox(hwnd, L"Error", L"Invalid Equation", 1);
+				}
+			}
+		}
+	}
+	if (leftp_count != rightp_count)
+	{
+		MessageBox(hwnd, L"Error", L"Invalid Equation", 1);
+	}
+	//check to make sure that all parenthesis are correct
+
 	return string();
 }
