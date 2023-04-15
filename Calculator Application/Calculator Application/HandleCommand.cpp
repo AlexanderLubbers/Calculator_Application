@@ -37,7 +37,7 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.update_json(screen_message, true);
         break;
     case SQROOT_PRESSED:
-        screen_message = "sqrt(";
+        screen_message = "rad(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
@@ -67,7 +67,7 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case EXPONENT_PRESSED:
-        screen_message = "exp(";
+        screen_message = "pow(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
@@ -92,12 +92,12 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case SINE_PRESSED:
-        screen_message = "sin(";
+        screen_message = "Sin(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
-    case E_PRESSED:
-        screen_message = "e";
+    case ABS_PRESSED:
+        screen_message = "abs(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
@@ -117,17 +117,17 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case SUBTRACT_PRESSED:
-        screen_message = "--";
+        screen_message = "-";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
     case COSINE_PRESSED:
-        screen_message = "cos(";
+        screen_message = "Cos(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
     case LOG_PRESSED:
-        screen_message = "log(";
+        screen_message = "log10(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
@@ -152,22 +152,22 @@ void HandleCommand::handle_command(HWND hWnd, WPARAM wParam)
         s.render_screen(hWnd);
         break;
     case TANGENT_PRESSED:
-        screen_message = "tan(";
+        screen_message = "Tan(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
     case INVERSE_SINE_PRESSED:
-        screen_message = "sin-1(";
+        screen_message = "asin(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
     case INVERSE_COSINE_PRESSED:
-        screen_message = "cos-1(";
+        screen_message = "acos(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;
     case INVERSE_TANGENT_PRESSED:
-        screen_message = "tan-1(";
+        screen_message = "atan(";
         s.update_json(screen_message, false);
         s.render_screen(hWnd);
         break;

@@ -134,12 +134,12 @@ void AddButtons::button(HWND hWnd)
     SqrootToolTipInfo.hwnd = hWnd;
     SqrootToolTipInfo.uFlags = Tool_Tip_Flag;
     SqrootToolTipInfo.uId = (UINT_PTR)h_Sqroot;
-    SqrootToolTipInfo.lpszText = (LPWSTR)(L"sqrt(index, radicand)");
+    SqrootToolTipInfo.lpszText = (LPWSTR)(L"rad(index, radicand)");
     SendMessage(hToolTipSqroot, TTM_ADDTOOL, 0, (LPARAM)&SqrootToolTipInfo);
 
     SendMessage(hToolTipSqroot, TTM_SETMAXTIPWIDTH, 0, 500);
     SendMessage(hToolTipSqroot, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipSqroot, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"sqrt()"));
+    SendMessage(hToolTipSqroot, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"radical"));
     //7
     HWND h_Seven = CreateWindow(L"BUTTON", L"7", dwStyle, 126.5, 202.5, 96.5, 72.5, hWnd, (HMENU)SEVEN_PRESSED, NULL, NULL);
 
@@ -249,12 +249,12 @@ void AddButtons::button(HWND hWnd)
     ExponentToolTipInfo.hwnd = hWnd;
     ExponentToolTipInfo.uFlags = Tool_Tip_Flag;
     ExponentToolTipInfo.uId = (UINT_PTR)h_Exponent;
-    ExponentToolTipInfo.lpszText = (LPWSTR)(L"exp(base, exponent)");
+    ExponentToolTipInfo.lpszText = (LPWSTR)(L"pow(base, exponent)");
     SendMessage(hToolTipExponent, TTM_ADDTOOL, 0, (LPARAM)&ExponentToolTipInfo);
 
     SendMessage(hToolTipExponent, TTM_SETMAXTIPWIDTH, 0, 500);
     SendMessage(hToolTipExponent, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipExponent, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"exp()"));
+    SendMessage(hToolTipExponent, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"pow()"));
 
     //4
     HWND h_Four = CreateWindow(L"BUTTON", L"4", dwStyle, 126.5, 290, 96.5, 72.5, hWnd, (HMENU)FOUR_PRESSED, NULL, NULL);
@@ -336,7 +336,7 @@ void AddButtons::button(HWND hWnd)
     SinToolTipInfo.hwnd = hWnd;
     SinToolTipInfo.uFlags = Tool_Tip_Flag;
     SinToolTipInfo.uId = (UINT_PTR)h_Sin;
-    SinToolTipInfo.lpszText = (LPWSTR)(L"Sin(theta)");
+    SinToolTipInfo.lpszText = (LPWSTR)(L"Sin(radians)");
     SendMessage(hToolTipSin, TTM_ADDTOOL, 0, (LPARAM)&SinToolTipInfo);
 
     SendMessage(hToolTipSin, TTM_SETMAXTIPWIDTH, 0, 500);
@@ -345,22 +345,22 @@ void AddButtons::button(HWND hWnd)
 
     //fourth row
 
-    HWND h_E = CreateWindow(L"BUTTON", L"E", dwStyle, 15, 377.5, 96.5, 72.5, hWnd, (HMENU)E_PRESSED, NULL, NULL);
+    HWND h_Abs = CreateWindow(L"BUTTON", L"abs", dwStyle, 15, 377.5, 96.5, 72.5, hWnd, (HMENU)ABS_PRESSED, NULL, NULL);
 
-    HWND hToolTipE = CreateWindowEx(0, TOOLTIPS_CLASS, NULL, TTS_ALWAYSTIP, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, hWnd, NULL, hInstance, NULL);
+    HWND hToolTipAbs = CreateWindowEx(0, TOOLTIPS_CLASS, NULL, TTS_ALWAYSTIP, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, hWnd, NULL, hInstance, NULL);
 
     //tool tip control for the e button
-    TOOLINFO EToolTipInfo = { 0 };
-    EToolTipInfo.cbSize = sizeof(EToolTipInfo);
-    EToolTipInfo.hwnd = hWnd;
-    EToolTipInfo.uFlags = Tool_Tip_Flag;
-    EToolTipInfo.uId = (UINT_PTR)h_E;
-    EToolTipInfo.lpszText = (LPWSTR)(L"E23 -> 10^23");
-    SendMessage(hToolTipE, TTM_ADDTOOL, 0, (LPARAM)&EToolTipInfo);
+    TOOLINFO AbsToolTipInfo = { 0 };
+    AbsToolTipInfo.cbSize = sizeof(AbsToolTipInfo);
+    AbsToolTipInfo.hwnd = hWnd;
+    AbsToolTipInfo.uFlags = Tool_Tip_Flag;
+    AbsToolTipInfo.uId = (UINT_PTR)h_Abs;
+    AbsToolTipInfo.lpszText = (LPWSTR)(L"abs(-23) -> 23");
+    SendMessage(hToolTipAbs, TTM_ADDTOOL, 0, (LPARAM)&AbsToolTipInfo);
 
-    SendMessage(hToolTipE, TTM_SETMAXTIPWIDTH, 0, 500);
-    SendMessage(hToolTipE, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipE, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"E"));
+    SendMessage(hToolTipAbs, TTM_SETMAXTIPWIDTH, 0, 500);
+    SendMessage(hToolTipAbs, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
+    SendMessage(hToolTipAbs, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"Abs()"));
     //1
     HWND h_One = CreateWindow(L"BUTTON", L"1", dwStyle, 126.5, 377.5, 96.5, 72.5, hWnd, (HMENU)ONE_PRESSED, NULL, NULL);
 
@@ -412,7 +412,7 @@ void AddButtons::button(HWND hWnd)
     SendMessage(hToolTipThree, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
     SendMessage(hToolTipThree, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"3"));
 
-    HWND h_Subtraction = CreateWindow(L"BUTTON", L"--", dwStyle, 461, 377.5, 96.5, 72.5, hWnd, (HMENU)SUBTRACT_PRESSED, NULL, NULL);
+    HWND h_Subtraction = CreateWindow(L"BUTTON", L"-", dwStyle, 461, 377.5, 96.5, 72.5, hWnd, (HMENU)SUBTRACT_PRESSED, NULL, NULL);
     // Create a new font with a larger size
     HFONT hFontSub = CreateFont(25, 10, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
         OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, L"Arial");
@@ -434,7 +434,7 @@ void AddButtons::button(HWND hWnd)
 
     SendMessage(hToolTipSub, TTM_SETMAXTIPWIDTH, 0, 500);
     SendMessage(hToolTipSub, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipSub, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"--"));
+    SendMessage(hToolTipSub, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"-"));
 
 
     //cosine
@@ -448,7 +448,7 @@ void AddButtons::button(HWND hWnd)
     CosToolTipInfo.hwnd = hWnd;
     CosToolTipInfo.uFlags = Tool_Tip_Flag;
     CosToolTipInfo.uId = (UINT_PTR)h_Cos;
-    CosToolTipInfo.lpszText = (LPWSTR)(L"Cos(theta)");
+    CosToolTipInfo.lpszText = (LPWSTR)(L"Cos(radians)");
     SendMessage(hToolTipCos, TTM_ADDTOOL, 0, (LPARAM)&CosToolTipInfo);
 
     SendMessage(hToolTipCos, TTM_SETMAXTIPWIDTH, 0, 500);
@@ -456,7 +456,7 @@ void AddButtons::button(HWND hWnd)
     SendMessage(hToolTipCos, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"Cos()"));
 
     //fifth row
-    HWND h_Log = CreateWindow(L"BUTTON", L"log", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)LOG_PRESSED, NULL, NULL);
+    HWND h_Log = CreateWindow(L"BUTTON", L"log10", dwStyle, 15, 465, 96.5, 72.5, hWnd, (HMENU)LOG_PRESSED, NULL, NULL);
 
     //tool tip control for the Log button
     HWND hToolTipLog = CreateWindowEx(0, TOOLTIPS_CLASS, NULL, TTS_ALWAYSTIP, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, hWnd, NULL, hInstance, NULL);
@@ -558,7 +558,7 @@ void AddButtons::button(HWND hWnd)
     TanToolTipInfo.hwnd = hWnd;
     TanToolTipInfo.uFlags = Tool_Tip_Flag;
     TanToolTipInfo.uId = (UINT_PTR)h_Tan;
-    TanToolTipInfo.lpszText = (LPWSTR)(L"Tan(theta)");
+    TanToolTipInfo.lpszText = (LPWSTR)(L"Tan(radians)");
     SendMessage(hToolTipTan, TTM_ADDTOOL, 0, (LPARAM)&TanToolTipInfo);
 
     SendMessage(hToolTipTan, TTM_SETMAXTIPWIDTH, 0, 500);
@@ -577,12 +577,12 @@ void AddButtons::button(HWND hWnd)
     ISinToolTipInfo.hwnd = hWnd;
     ISinToolTipInfo.uFlags = Tool_Tip_Flag;
     ISinToolTipInfo.uId = (UINT_PTR)h_Sininv;
-    ISinToolTipInfo.lpszText = (LPWSTR)(L"Sin-1(theta)");
+    ISinToolTipInfo.lpszText = (LPWSTR)(L"asin(x)");
     SendMessage(hToolTipISin, TTM_ADDTOOL, 0, (LPARAM)&ISinToolTipInfo);
 
     SendMessage(hToolTipISin, TTM_SETMAXTIPWIDTH, 0, 500);
     SendMessage(hToolTipISin, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipISin, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"Sin-1()"));
+    SendMessage(hToolTipISin, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"asin()"));
 
     //inverse Cosine
     HWND h_Cosinv = CreateWindow(L"BUTTON", L"arc-cos", dwStyle, 182.25, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_COSINE_PRESSED, NULL, NULL);
@@ -595,12 +595,12 @@ void AddButtons::button(HWND hWnd)
     ICosToolTipInfo.hwnd = hWnd;
     ICosToolTipInfo.uFlags = Tool_Tip_Flag;
     ICosToolTipInfo.uId = (UINT_PTR)h_Cosinv;
-    ICosToolTipInfo.lpszText = (LPWSTR)(L"Cos-1(theta)");
+    ICosToolTipInfo.lpszText = (LPWSTR)(L"acos(x)");
     SendMessage(hToolTipICos, TTM_ADDTOOL, 0, (LPARAM)&ICosToolTipInfo);
 
     SendMessage(hToolTipICos, TTM_SETMAXTIPWIDTH, 0, 500);
     SendMessage(hToolTipICos, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipICos, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"Cos-1()"));
+    SendMessage(hToolTipICos, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"acos()"));
 
     //inverse Tangent
     HWND h_Taninv = CreateWindow(L"BUTTON", L"arc-tan", dwStyle, 349.5, 552.5, 152.25, 72.5, hWnd, (HMENU)INVERSE_TANGENT_PRESSED, NULL, NULL);
@@ -613,12 +613,12 @@ void AddButtons::button(HWND hWnd)
     ITanToolTipInfo.hwnd = hWnd;
     ITanToolTipInfo.uFlags = Tool_Tip_Flag;
     ITanToolTipInfo.uId = (UINT_PTR)h_Taninv;
-    ITanToolTipInfo.lpszText = (LPWSTR)(L"Tan-1(theta)");
+    ITanToolTipInfo.lpszText = (LPWSTR)(L"atan(x)");
     SendMessage(hToolTipITan, TTM_ADDTOOL, 0, (LPARAM)&ITanToolTipInfo);
 
     SendMessage(hToolTipITan, TTM_SETMAXTIPWIDTH, 0, 500);
     SendMessage(hToolTipITan, TTM_SETDELAYTIME, TTDT_INITIAL, MAKELPARAM(0, 500));
-    SendMessage(hToolTipITan, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"Tan-1()"));
+    SendMessage(hToolTipITan, TTM_SETTITLE, TTI_INFO, (LPARAM)(L"atan()"));
 
     HWND h_Enter = CreateWindow(L"BUTTON", L"enter", dwStyle, 516.75, 552.5, 152.25, 72.5, hWnd, (HMENU)ENTER_PRESSED, NULL, NULL);
 
