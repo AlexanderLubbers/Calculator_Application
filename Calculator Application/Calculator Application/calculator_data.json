@@ -1,8 +1,9 @@
 {
-    "Current Equation": "logB(2,2)",
-    "Current Answer": "",
+    "Current Equation": "8/2",
+    "Current Answer": "4.000000",
     "Equation History": {
-        "dummy": "foo"
+        "dummy": "foo",
+        "answer2": "8/2"
     },
     "Answer History": {
         "test": "test"

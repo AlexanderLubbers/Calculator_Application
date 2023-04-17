@@ -125,9 +125,53 @@ double Math::Parser(HWND hwnd)
 void Math::json_updator(double answer)
 {
 	stringstream ss;
+	ifstream file("calculator_data.json");
 
+	//parse the json into a string
+	ss << file.rdbuf();
+	string json_str = ss.str();
+	ss.clear();
+
+	//parse the string into a document object
+	Document doc;
+	doc.Parse(json_str.c_str());
+
+	Value& new_answer = doc["Current Answer"];
+	std::string str_answer = std::to_string(answer);
+	new_answer.SetString(str_answer.c_str(), str_answer.length(), doc.GetAllocator());
+
+	std::string equation = doc["Current Equation"].GetString();
+
+	Value& equations = doc["Equation History"];
+	//find length of equations
+	const size_t num_items = equations.MemberCount();
+	
+	int key_num = num_items + 1;
+	std::string str_key = std::to_string(key_num);
+	std::string key = "answer" + str_key;
+
+	Value equation_value;
+	equation_value.SetString(equation.c_str(), equation.length(), doc.GetAllocator());
+	equations.AddMember(StringRef(key.c_str()), equation_value, doc.GetAllocator());
+
+	//write the string form of the json back into a file format
+	StringBuffer buf;
+	PrettyWriter<StringBuffer> writer(buf);
+	doc.Accept(writer);
+	
+	ofstream update_file("calculator_data.json");
+	update_file << buf.GetString() << endl;
 }
 
 void Math::displayer()
 {
 }
+
+//thoughts
+// */ = checkmark
+//how the json updator will work
+//1. make current answer the answer */
+//2. put current equation in the equation history section of the json*/
+//3. clear the current equation item
+//4. if clear button is pressed then put the current answer in the answer history section
+//5. on startup check if the current answer item displays something, if so then display that instead
