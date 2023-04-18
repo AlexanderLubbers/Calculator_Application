@@ -1,9 +1,10 @@
 {
     "Current Equation": "",
-    "Current Answer": "",
+    "Current Answer": "1.250000",
     "Equation History": {
+        "equation1": "9/3",
+        "equation2": "5/4"
     },
-    "Answer History": {
-    },
+    "Answer History": {},
     "Mode": "Dark Mode"
 }
