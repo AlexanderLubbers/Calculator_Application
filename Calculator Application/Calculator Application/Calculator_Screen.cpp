@@ -34,12 +34,10 @@ Calculator_Screen::Calculator_Screen()
 		//sub json for the equation history
 		Document EquationHistory;
 		EquationHistory.SetObject();
-		EquationHistory.AddMember("dummy", "foo", EquationHistory.GetAllocator());
 
 		//sub json for answer history
 		Document AnswerHistory;
 		AnswerHistory.SetObject();
-		AnswerHistory.AddMember("test", "test", AnswerHistory.GetAllocator());
 
 		document.AddMember("Current Equation", "", document.GetAllocator());
 		document.AddMember("Current Answer", "", document.GetAllocator());
@@ -163,27 +161,61 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 	{
 		if (character == "CLEAR")
 		{
+			
 			ifstream file("calculator_data.json");
 			ss << file.rdbuf();
 			string json_str = ss.str();
 
 			Document json;
 			json.Parse(json_str.c_str());
+			if (json["Current Answer"].GetString() != "")
+			{
+				std::string answer = json["Current Answer"].GetString();
+				if (answer == "")
+				{
+					return;
+				}
+				Value& answers = json["Answer History"];
+				const size_t num_answers = answers.MemberCount();
+				int keynum = num_answers + 1;
+				std::string key = "answer" + std::to_string(keynum);
 
-			Value& equation = json["Current Equation"];
-			equation.SetString("");
+				Value answer_value;
+				answer_value.SetString(answer.c_str(), answer.length(), json.GetAllocator());
+				answers.AddMember(StringRef(key.c_str()), answer_value, json.GetAllocator());
 
-			StringBuffer buf;
-			PrettyWriter<StringBuffer> writer(buf);
-			json.Accept(writer);
+				Value& new_answer = json["Current Answer"];
+				new_answer.SetString("");
 
-			ofstream update_file("calculator_data.json");
-			update_file << buf.GetString() << endl;
+				StringBuffer buf;
+				PrettyWriter<StringBuffer> writer(buf);
+				json.Accept(writer);
+
+				ofstream update_file("calculator_data.json");
+				update_file << buf.GetString() << endl;
+
+				HWND hwnd = GetForegroundWindow();
+				render_screen(hwnd);
+				
+			}
+			else
+			{
+				Value& equation = json["Current Equation"];
+				equation.SetString("");
+
+				StringBuffer buf;
+				PrettyWriter<StringBuffer> writer(buf);
+				json.Accept(writer);
+
+				ofstream update_file("calculator_data.json");
+				update_file << buf.GetString() << endl;
+
+				// Get a handle to the current window
+				HWND hwnd = GetForegroundWindow();
+
+				render_screen(hwnd);
+			}
 			
-			// Get a handle to the current window
-			HWND hwnd = GetForegroundWindow();
-
-			render_screen(hwnd);
 		}
 		else if (character == "ENTER")
 		{

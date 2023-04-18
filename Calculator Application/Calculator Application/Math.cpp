@@ -141,6 +141,10 @@ void Math::json_updator(double answer)
 	new_answer.SetString(str_answer.c_str(), str_answer.length(), doc.GetAllocator());
 
 	std::string equation = doc["Current Equation"].GetString();
+	if (equation == "")
+	{
+		return;
+	}
 
 	Value& equations = doc["Equation History"];
 	//find length of equations
@@ -148,11 +152,14 @@ void Math::json_updator(double answer)
 	
 	int key_num = num_items + 1;
 	std::string str_key = std::to_string(key_num);
-	std::string key = "answer" + str_key;
+	std::string key = "equation" + str_key;
 
 	Value equation_value;
 	equation_value.SetString(equation.c_str(), equation.length(), doc.GetAllocator());
 	equations.AddMember(StringRef(key.c_str()), equation_value, doc.GetAllocator());
+
+	Value& current_equation = doc["Current Equation"];
+	current_equation.SetString("", 0, doc.GetAllocator());
 
 	//write the string form of the json back into a file format
 	StringBuffer buf;
@@ -172,6 +179,6 @@ void Math::displayer()
 //how the json updator will work
 //1. make current answer the answer */
 //2. put current equation in the equation history section of the json*/
-//3. clear the current equation item
-//4. if clear button is pressed then put the current answer in the answer history section
+//3. clear the current equation item */
+//4. if clear button is pressed then put the current answer in the answer history section */
 //5. on startup check if the current answer item displays something, if so then display that instead

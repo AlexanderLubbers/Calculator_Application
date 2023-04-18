@@ -1,12 +1,9 @@
 {
-    "Current Equation": "8/2",
-    "Current Answer": "4.000000",
+    "Current Equation": "",
+    "Current Answer": "",
     "Equation History": {
-        "dummy": "foo",
-        "answer2": "8/2"
     },
     "Answer History": {
-        "test": "test"
     },
     "Mode": "Dark Mode"
 }
