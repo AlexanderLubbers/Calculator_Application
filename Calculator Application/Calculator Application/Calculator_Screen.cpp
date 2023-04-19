@@ -122,6 +122,7 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 	stringstream ss;
 	//convert the character to a c-styled string
 	const char* msg = character.c_str();
+
 	if (special_msg == false) 
 	{
 		// Read the JSON file into a string
@@ -147,6 +148,30 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 		equation_update.SetString(new_msg.c_str(), new_msg.length(), json.GetAllocator());
 		//deallocate that memory to avoid memory leaks
 		delete[] buffer;
+
+		std::string empty = "";
+
+		if (json["Current Answer"].GetString() != empty)
+		{
+			std::string answer = json["Current Answer"].GetString();
+			if (answer == empty)
+			{
+				return;
+			}
+			Value& answers = json["Answer History"];
+			const size_t num_answers = answers.MemberCount();
+			int keynum = num_answers + 1;
+			std::string ans_key = "answer" + std::to_string(keynum);
+
+			Value answer_value;
+			answer_value.SetString(answer.c_str(), answer.length(), json.GetAllocator());
+			Value answer_key;
+			answer_key.SetString(ans_key.c_str(), ans_key.length(), json.GetAllocator());
+			answers.AddMember(answer_key, answer_value, json.GetAllocator());
+
+			Value& new_answer = json["Current Answer"];
+			new_answer.SetString("");
+		}
 
 		//writing the document back into a json file
 		StringBuffer buffer_out;
@@ -180,11 +205,11 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 				Value& answers = json["Answer History"];
 				const size_t num_answers = answers.MemberCount();
 				int keynum = num_answers + 1;
-				std::string key = "answer" + std::to_string(keynum);
+				std::string ans_key = "answer" + std::to_string(keynum);
 
 				Value answer_value;
 				answer_value.SetString(answer.c_str(), answer.length(), json.GetAllocator());
-				answers.AddMember(StringRef(key.c_str()), answer_value, json.GetAllocator());
+				answers.AddMember(StringRef(ans_key.c_str()), answer_value, json.GetAllocator());
 
 				Value& new_answer = json["Current Answer"];
 				new_answer.SetString("");
@@ -197,8 +222,6 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 				update_file << buf.GetString() << endl;
 
 				HWND hwnd = GetForegroundWindow();
-
-				MessageBox(hwnd, L"hooray", L"hooray", 1);
 				
 				render_screen(hwnd);
 				

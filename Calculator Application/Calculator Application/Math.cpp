@@ -136,12 +136,14 @@ void Math::json_updator(double answer)
 	Document doc;
 	doc.Parse(json_str.c_str());
 
+	//setting the current answer to the new answer
 	Value& new_answer = doc["Current Answer"];
 	std::string str_answer = std::to_string(answer);
 	new_answer.SetString(str_answer.c_str(), str_answer.length(), doc.GetAllocator());
 
 	std::string equation = doc["Current Equation"].GetString();
-	if (equation == "")
+	std::string empty = "";
+	if (equation == empty)
 	{
 		return;
 	}
@@ -151,8 +153,7 @@ void Math::json_updator(double answer)
 	const size_t num_items = equations.MemberCount();
 	
 	int key_num = num_items + 1;
-	std::string str_key = std::to_string(key_num);
-	std::string key = "equation" + str_key;
+	std::string key = "equation" + std::to_string(key_num);
 
 	Value equation_value;
 	equation_value.SetString(equation.c_str(), equation.length(), doc.GetAllocator());
