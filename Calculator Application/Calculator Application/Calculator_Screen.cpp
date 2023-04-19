@@ -161,17 +161,19 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 	{
 		if (character == "CLEAR")
 		{
-			
 			ifstream file("calculator_data.json");
 			ss << file.rdbuf();
 			string json_str = ss.str();
 
 			Document json;
 			json.Parse(json_str.c_str());
-			if (json["Current Answer"].GetString() != "")
+
+			std::string empty = "";
+
+			if (json["Current Answer"].GetString() != empty)
 			{
 				std::string answer = json["Current Answer"].GetString();
-				if (answer == "")
+				if (answer == empty)
 				{
 					return;
 				}
@@ -195,10 +197,13 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 				update_file << buf.GetString() << endl;
 
 				HWND hwnd = GetForegroundWindow();
+
+				MessageBox(hwnd, L"hooray", L"hooray", 1);
+				
 				render_screen(hwnd);
 				
 			}
-			else
+			if(json["Current Equation"].GetString() != empty)
 			{
 				Value& equation = json["Current Equation"];
 				equation.SetString("");
