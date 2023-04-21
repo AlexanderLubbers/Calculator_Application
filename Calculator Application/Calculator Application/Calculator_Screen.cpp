@@ -251,6 +251,9 @@ void Calculator_Screen::update_json(string character, bool special_msg)
 			HWND hwnd = FindWindow(L"Calculator App", L"Calculator");
 			double answer = math.Parser(hwnd);
 			math.json_updator(answer);
+			math.displayer();
+			Global g;
+			g.startup = true;
 		}
 		else
 		{

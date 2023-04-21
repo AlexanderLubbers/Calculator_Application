@@ -51,12 +51,56 @@ void screen_startup(HWND hwnd)
     file.open("calculator_data.json");
     if (file)
     {
+        
         //parse json into string
         ss << file.rdbuf();
         string json_str = ss.str();
         //parse string into document object
         Document doc;
         doc.Parse(json_str.c_str());
+        string answer = doc["Current Answer"].GetString();
+        string empty = "";
+        if (answer != empty)
+        {
+            if (b.startup == false)
+            {
+                LOGFONT lf = { 0 };
+                lf.lfHeight = 50; // set font height to a certain amount of pixels
+                lf.lfWeight = FW_NORMAL;
+                lf.lfCharSet = DEFAULT_CHARSET;
+                lstrcpy(lf.lfFaceName, TEXT("Arial"));
+                HFONT hFont = CreateFontIndirect(&lf);
+
+                //hdc means handle device context
+                //it is a data structure that handles graphic objects and their associated attributes
+                //get the hdc
+                HDC hdc = GetDC(hwnd);
+
+                SelectObject(hdc, hFont);
+
+                Global g;
+                LPCWSTR screen_message = g.convert_to_lpcwstr(answer);
+
+                //erase everything in a given rectangle by invalidating that rectance
+                /*RECT rect;
+                rect.left = 10;
+                rect.top = 10;
+                rect.right = 10000;
+                rect.bottom = 100;
+                InvalidateRect(hwnd, &rect, TRUE);*/
+
+                HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+                TextOut(hdc, 10, 35, screen_message, answer.length());
+                //cleanup
+                SelectObject(hdc, hOldFont);
+                DeleteObject(hFont);
+                ReleaseDC(hwnd, hdc);
+                b.startup = false;
+                return;
+            }
+            return;
+        }
         //get the string stored in "current equation"
         string text = doc["Current Equation"].GetString();
         //get the hdc
@@ -150,7 +194,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CALCULATORAPPLICATION));
 
     MSG msg;
-
+    HWND hwnd = FindWindow(L"Calculator App", L"Calculator");
     // Main message loop:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
@@ -180,10 +224,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-        
         screen_startup(hWnd);
-
-        
         EndPaint(hWnd, &ps);
     }
     break;
