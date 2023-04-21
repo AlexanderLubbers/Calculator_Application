@@ -9,6 +9,5 @@ public:
 	static double logB(double base, double argument);
 	static double Parser(HWND hwnd);
 	void json_updator(double answer);
-	void displayer();
 };
 
