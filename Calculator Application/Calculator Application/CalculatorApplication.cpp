@@ -81,14 +81,6 @@ void screen_startup(HWND hwnd)
                 Global g;
                 LPCWSTR screen_message = g.convert_to_lpcwstr(answer);
 
-                //erase everything in a given rectangle by invalidating that rectance
-                /*RECT rect;
-                rect.left = 10;
-                rect.top = 10;
-                rect.right = 10000;
-                rect.bottom = 100;
-                InvalidateRect(hwnd, &rect, TRUE);*/
-
                 HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
 
                 TextOut(hdc, 10, 35, screen_message, answer.length());
@@ -99,6 +91,25 @@ void screen_startup(HWND hwnd)
                 b.startup = false;
                 return;
             }
+            LOGFONT lf = { 0 };
+            lf.lfHeight = 50; // set font height to a certain amount of pixels
+            lf.lfWeight = FW_NORMAL;
+            lf.lfCharSet = DEFAULT_CHARSET;
+            lstrcpy(lf.lfFaceName, TEXT("Arial"));
+            HFONT hFont = CreateFontIndirect(&lf);
+
+            Global g;
+            LPCWSTR screen_message = g.convert_to_lpcwstr(answer);
+            HDC hdc = GetDC(hwnd);
+            SelectObject(hdc, hFont);
+            HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+            TextOut(hdc, 10, 35, screen_message, answer.length());
+
+            SelectObject(hdc, hOldFont);
+            DeleteObject(hFont);
+            ReleaseDC(hwnd, hdc);
+
             return;
         }
         //get the string stored in "current equation"
