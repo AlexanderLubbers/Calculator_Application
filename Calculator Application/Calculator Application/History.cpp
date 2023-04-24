@@ -99,7 +99,13 @@ LRESULT History::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_COMMAND:
 	{
+		switch (wParam)
+		{
+		case BUTTON_PRESSED:
 
+			//clearer();
+			break;
+		}
 	}
 		break;
 	case WM_CTLCOLORBTN: //In order to make those edges invisble when we use RoundRect(),
@@ -167,7 +173,7 @@ void History::writer()
 	
 	equation_doc.Parse(str_equations.c_str());
 	answer_doc.Parse(str_answers.c_str());
-	int count = 0;
+	int ecounter = 0;
 	//looping through each document and outputing each equation to the screen
 	for (const auto& member : equation_doc.GetObj())
 	{
@@ -192,7 +198,7 @@ void History::writer()
 
 			SelectObject(hdc, hFont);
 
-			int y = 159 + (30 * (count - 1));
+			int y = 160 + (30 * (ecounter - 1));
 			TextOut(hdc, 10, y, equation, equation_str.length());
 
 			HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
@@ -206,8 +212,9 @@ void History::writer()
 			MessageBox(hwnd, L"Error while printing equations to screen", L"Error", 1);
 		}
 		
-		count++;
+		ecounter++;
 	}
+	int acounter = 0;
 	for (const auto& member : answer_doc.GetObj())
 	{
 
@@ -230,7 +237,7 @@ void History::writer()
 			HFONT hFont = CreateFontIndirect(&lf);
 
 			SelectObject(hdc, hFont);
-			int y = 70 + (30 * (count - 1));
+			int y = 160 + (30 * (acounter - 1));
 			TextOut(hdc, 640, y, answer, answer_str.length());
 
 			HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
@@ -244,10 +251,39 @@ void History::writer()
 			HWND hwnd = FindWindow(L"History Window", L"History");
 			MessageBox(hwnd, L"Error while print answers to screen", L"Error", 1);
 		}
-		count++;
+		acounter++;
 	}
 }
 
 void History::clearer()
 {
+	stringstream ss;
+	ifstream file("calculator_dta.json");
+
+	ss << file.rdbuf();
+	string json_str = ss.str();
+	ss.clear();
+
+	Document doc;
+	doc.Parse(json_str.c_str());
+
+	Value& equations = doc["Equation History"];
+	Value& answers = doc["Answer History"];
+	
+	int count = 1;
+	
+	for (const auto& member : equations.GetObj())
+	{
+		string key = "equation" + to_string(count);
+		if (equations.HasMember(key.c_str()))
+		{
+
+		}
+		else
+		{
+			HWND hwnd = FindWindow(L"History App", L"History");
+			MessageBox(hwnd, L"Error while deleting history", L"Error", 1);
+		}
+		count++;
+	}
 }
