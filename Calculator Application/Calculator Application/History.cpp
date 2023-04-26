@@ -103,7 +103,7 @@ LRESULT History::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		{
 		case BUTTON_PRESSED:
 
-			//clearer();
+			clearer();
 			break;
 		}
 	}
@@ -258,7 +258,7 @@ void History::writer()
 void History::clearer()
 {
 	stringstream ss;
-	ifstream file("calculator_dta.json");
+	ifstream file("calculator_data.json");
 
 	ss << file.rdbuf();
 	string json_str = ss.str();
@@ -270,20 +270,19 @@ void History::clearer()
 	Value& equations = doc["Equation History"];
 	Value& answers = doc["Answer History"];
 	
-	int count = 1;
-	
-	for (const auto& member : equations.GetObj())
-	{
-		string key = "equation" + to_string(count);
-		if (equations.HasMember(key.c_str()))
-		{
+	equations.RemoveAllMembers();
+	answers.RemoveAllMembers();
+	StringBuffer buf;
+	PrettyWriter<StringBuffer> writer(buf);
 
-		}
-		else
-		{
-			HWND hwnd = FindWindow(L"History App", L"History");
-			MessageBox(hwnd, L"Error while deleting history", L"Error", 1);
-		}
-		count++;
-	}
+	doc.Accept(writer);
+	ofstream json_file("calculator_data.json");
+	json_file << buf.GetString() << endl;
+
+	HWND hwnd = FindWindow(L"History Window", L"History");
+
+	RECT rcClient;
+	GetClientRect(hwnd, &rcClient); // Get the client area of the window
+
+	RedrawWindow(hwnd, &rcClient, NULL, RDW_INVALIDATE | RDW_ERASE);
 }

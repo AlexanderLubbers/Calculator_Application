@@ -1,13 +1,7 @@
 {
     "Current Equation": "",
     "Current Answer": "",
-    "Equation History": {
-        "equation1": "9/6",
-        "equation2": "8/6"
-    },
-    "Answer History": {
-        "answer1": "1.500000",
-        "answer2": "1.333333"
-    },
+    "Equation History": {},
+    "Answer History": {},
     "Mode": "Dark Mode"
 }
