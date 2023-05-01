@@ -35,3 +35,6 @@ if you really want to contribute to this project, then you should fork this repo
     
 # Known problems
 1. The dark mode feature does not work
+
+# Packaged Project
+The packaged project which containes the exe file for the calculator can be found the the Release folder.
