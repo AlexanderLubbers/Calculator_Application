@@ -1,7 +1,11 @@
 {
     "Current Equation": "",
     "Current Answer": "",
-    "Equation History": {},
-    "Answer History": {},
+    "Equation History": {
+        "equation1": "logB(2,2)"
+    },
+    "Answer History": {
+        "answer1": "1.000000"
+    },
     "Mode": "Dark Mode"
 }
